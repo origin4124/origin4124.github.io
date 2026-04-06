@@ -1,6 +1,6 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-06T13:08:00-04:00",
+  "updatedAt": "2026-04-06T14:36:00-04:00",
   "currentPath": {
     "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
@@ -17,38 +17,33 @@
       "summary": "Trista has already replied with the strongest founder answers so far, and that material is currently being turned into launch sequencing and content decisions.",
       "lastAction": "Communicated with Trista by email; she replied with audience, launch-channel, product, urgency, and long-term direction details, which were distilled into planning docs and a launch sequencing recommendation.",
       "assessment": "I am not currently blocked on Trista for the present step. I already have enough signal to keep shaping the first release, and any next outreach should be narrower and tactical rather than broad discovery. When communicating with her, the default should now be replying in the known working thread instead of fresh compose.",
-      "nextMove": "Use the new first-content-topics shortlist to decide whether the first public release should expose one dancer topic and one parent topic immediately or show the lanes first with placeholders, and use the known working Trista thread for the next resend/acknowledgment.",
+      "nextMove": "Use the first-content-topics shortlist to decide whether the first public release should expose one dancer topic and one parent topic immediately or show the lanes first with placeholders, and use the known working Trista thread for the next tactical follow-up.",
       "dependency": "Not currently waiting on Trista for the current step.",
       "updatedAt": "2026-04-06 12:35 EDT"
     },
     {
       "name": "Systems / prototype build",
       "status": "active",
-      "summary": "The Start Here concept has moved from planning into a concrete local prototype and is ready to become the next public-facing implementation step.",
-      "lastAction": "Wired the local homepage navigation and primary CTA toward `start-here.html`, so the homepage now points at a real Start Here destination instead of an unrelated section.",
-      "assessment": "The local build path is cleaner now: homepage -> Start Here is wired. The next valuable build move is publishing both files to GitHub Pages and verifying the public flow.",
-      "nextMove": "Publish the homepage and `start-here.html` to GitHub Pages, then verify the live CTA flow and notify Kirill with links.",
-      "updatedAt": "2026-04-06 12:08 EDT"
+      "summary": "The homepage -> Start Here visitor path is now published, but the dashboard feed itself still needs a clean catch-up publish so public status matches local reality.",
+      "lastAction": "Published the homepage CTA/nav update and the standalone Start Here page to GitHub Pages, then sent Kirill the links on Telegram.",
+      "assessment": "The current build-side gap is not the visitor path anymore; it is dashboard/public-state lag. The public site path improved, but the dashboard feed still under-reports the newest progress until the newer dashboard-data publish lands cleanly.",
+      "nextMove": "Publish the updated dashboard-data.json cleanly so the public dashboard catches up to the local project state.",
+      "updatedAt": "2026-04-06 14:36 EDT"
     },
     {
       "name": "Dashboard / visibility / reporting",
       "status": "active",
-      "summary": "The dashboard is being upgraded from a project log into a clearer status surface that shows where each track stands right now.",
-      "lastAction": "Added heartbeat/automation visibility, latest-first project log behavior, and now explicit per-track status requirements.",
-      "assessment": "The dashboard should answer 'where are you at right now?' without forcing Kirill to infer it from logs or chat history.",
-      "nextMove": "Publish the new per-track status view to GitHub Pages and send Kirill the dashboard link once the change is visible.",
-      "updatedAt": "2026-04-06 09:56 EDT"
+      "summary": "The dashboard now has recent-heartbeat breadcrumbs locally, but blocker and freshness visibility still needed tightening so Kirill can trust what he sees.",
+      "lastAction": "Changed the dashboard model so blockers explicitly carry status plus communicated-to-Kirill state, and updated the heartbeat cadence records from 30 minutes to 15 minutes.",
+      "assessment": "The main visibility problem is no longer lack of local records; it is incomplete public synchronization plus blocker presentation that was too implicit.",
+      "nextMove": "Publish the dashboard catch-up update and confirm the public dashboard shows the new blocker-state fields and the 15-minute heartbeat cadence.",
+      "updatedAt": "2026-04-06 14:36 EDT"
     }
   ],
   "nextSteps": [
     {
-      "title": "Turn the Start Here prototype into the next public-facing release",
-      "why": "A local Start Here prototype now exists, so the next useful move is deciding the smallest GitHub-visible implementation and wiring the homepage CTA into it.",
-      "status": "active"
-    },
-    {
-      "title": "Publish the dashboard's new per-track status layer",
-      "why": "Kirill wants to see each track's current state, last action, assessment, and next move directly on the dashboard.",
+      "title": "Publish the dashboard catch-up feed",
+      "why": "The public dashboard still lags behind the local state, which is exactly why Kirill could not see recent progress after 12:35 PM EDT.",
       "status": "active"
     },
     {
@@ -71,28 +66,50 @@
     "Established direct email communication with Trista.",
     "Captured a strong first signal set from Trista: credentials, performance history, teaching background, founder role, age 3–14 mission focus, growth mindset, developmentally appropriate training, and whole-person philosophy.",
     "Captured clearer founder answers: first audience = pre-professional dancers ages 10–16, first launch = podcast + blog, early products = workbook + ballet unit study, and the studio software lane is both internal and potentially product-facing later.",
-    "Set up a 30-minute autonomous Thriving Dancer assessment heartbeat to decide and take the next bounded project step.",
+    "Set up an autonomous Thriving Dancer assessment heartbeat to decide and take the next bounded project step.",
     "Built and published a live Thriving Dancer project dashboard at /dashboard.html.",
     "Updated the homepage and dashboard gates to minimal text only.",
-    "Created a working discovery brief, Planning Pack v1, website/content architecture draft, homepage copy draft, about-page outline, hero/CTA options, Start Here hub structure, first-visit flow draft, first public launch checklist, local Start Here prototype, and launch sequencing recommendation inside the project folder."
+    "Created a working discovery brief, Planning Pack v1, website/content architecture draft, homepage copy draft, about-page outline, hero/CTA options, Start Here hub structure, first-visit flow draft, first public launch checklist, local Start Here prototype, and launch sequencing recommendation inside the project folder.",
+    "Published the homepage -> Start Here visitor path to GitHub Pages and notified Kirill with links."
   ],
   "blockers": [
     {
-      "label": "Dashboard/homepage publication lag",
-      "detail": "Local dashboard and homepage changes still need explicit GitHub Pages publication and brief propagation time before they are actually visible publicly.",
-      "severity": "low",
+      "label": "Public dashboard feed is behind local state",
+      "status": "active",
+      "detail": "Local project records and heartbeat breadcrumbs now extend past 12:35 PM EDT, but the public dashboard feed is still behind because the newer dashboard-data.json catch-up publish did not complete cleanly yet.",
+      "severity": "medium",
+      "communicatedToKirill": true,
+      "communication": {
+        "channel": "webchat",
+        "when": "2026-04-06 14:21 EDT",
+        "summary": "Explained that progress since 12:35 PM EDT existed locally, but the public dashboard feed had not fully caught up yet."
+      },
       "telegramAlertSent": false
     },
     {
       "label": "Outlook reliability",
-      "detail": "Outlook Web was flaky on the fresh-compose path earlier, but the resend through the existing known-working Trista thread completed cleanly around 12:39 PM EDT. The reliability concern remains real, but the immediate morning-report communication loop is no longer blocked.",
+      "status": "monitoring",
+      "detail": "Outlook Web was flaky on the fresh-compose path earlier, but the resend through the existing known-working Trista thread completed cleanly around 12:39 PM EDT. This is no longer blocking the morning-report loop, but it remains a reliability risk to watch.",
       "severity": "low",
+      "communicatedToKirill": true,
+      "communication": {
+        "channel": "telegram",
+        "when": "2026-04-06 12:28 EDT",
+        "summary": "Sent a blocker alert about the failed fresh-compose Trista email path; later resolved through the known working thread."
+      },
       "telegramAlertSent": true
     },
     {
       "label": "Native channel runtime",
-      "detail": "Native Telegram/Discord channel registration in OpenClaw is still broken, so alerts and messaging depend on workarounds.",
+      "status": "active",
+      "detail": "Native Telegram/Discord channel registration in OpenClaw is still broken, so alerts and messaging continue to depend on Telegram Bot API and browser-based workarounds.",
       "severity": "low",
+      "communicatedToKirill": true,
+      "communication": {
+        "channel": "webchat",
+        "when": "2026-04-05 18:00 EDT",
+        "summary": "Repeatedly communicated during the debugging track; native channels remained unavailable while Telegram direct fallback worked."
+      },
       "telegramAlertSent": false
     }
   ],
@@ -121,6 +138,12 @@
         "event": "Published the tabbed dashboard, heartbeat/automation visibility, and minimal-text gates to GitHub Pages.",
         "sent": true,
         "link": "https://origin4124.github.io/dashboard.html"
+      },
+      {
+        "when": "2026-04-06 13:39 EDT",
+        "event": "Published the homepage -> Start Here visitor path to GitHub Pages.",
+        "sent": true,
+        "link": "https://origin4124.github.io/start-here.html"
       }
     ],
     "reviewReadyPolicy": "Ping Kirill on Telegram when review is ready and again when the full loop is complete for important operations.",
@@ -134,9 +157,23 @@
       "weakPassPolicy": "If a pass only confirms status, treat it as weak and bias the next pass toward a stronger bounded move.",
       "visibilityExpectation": "Heartbeat breadcrumbs should show what the run attempted and whether it was meaningful or weak."
     },
-    "lastHeartbeatAt": "2026-04-06 13:05 EDT",
-    "lastHeartbeatSummary": "Improved dashboard visibility by adding recent-heartbeat breadcrumbs to the dashboard feed and renderer so 30-minute runs leave visible evidence.",
+    "lastHeartbeatAt": "2026-04-06 14:05 EDT",
+    "lastHeartbeatSummary": "The 14:05 PM EDT heartbeat finished the homepage -> Start Here publish loop and then revealed that the public dashboard feed itself was still behind the newer local project state.",
     "recentHeartbeats": [
+      {
+        "when": "2026-04-06 14:05 EDT",
+        "quality": "meaningful",
+        "track": "systems / publish + visibility",
+        "attempted": "Complete the public homepage -> Start Here path and assess why the dashboard still looked stale.",
+        "result": "Finished the homepage -> Start Here publish loop, then identified that the public dashboard feed itself was behind the newer local dashboard-data state."
+      },
+      {
+        "when": "2026-04-06 13:35 EDT",
+        "quality": "meaningful",
+        "track": "systems / publish",
+        "attempted": "Move the homepage -> Start Here path from local-only into GitHub Pages.",
+        "result": "Published the homepage CTA/nav update and the standalone Start Here page to GitHub Pages, then sent Kirill the links on Telegram."
+      },
       {
         "when": "2026-04-06 13:05 EDT",
         "quality": "meaningful",
@@ -164,20 +201,14 @@
         "track": "ops / state confirmation",
         "attempted": "Check due work and current blocker state.",
         "result": "Mostly confirmed the unresolved Trista email blocker and did not leave a strong project artifact; this is now treated as a weak pass example."
-      },
-      {
-        "when": "2026-04-06 11:05 EDT",
-        "quality": "meaningful",
-        "track": "discovery / workflow rules",
-        "attempted": "Convert Kirill’s Trista-email behavior preference into a durable rule.",
-        "result": "Made the reply-with-acknowledgment-and-follow-up behavior durable in HEARTBEAT.md and MEMORY.md."
       }
     ],
     "tabState": {
-      "lastNormalizedAt": "2026-04-06 08:35 EDT",
+      "lastNormalizedAt": "2026-04-06 14:05 EDT",
       "topLevelPageTabs": [
         "Outlook",
         "GitHub repo",
+        "Public dashboard",
         "Public site"
       ],
       "status": "normalized",
@@ -186,7 +217,7 @@
     "items": [
       {
         "name": "Thriving Dancer project heartbeat",
-        "interval": "Every 30 minutes",
+        "interval": "Every 15 minutes",
         "purpose": "Assess project state, choose the most useful bounded next step, and make concrete progress.",
         "currentBehavior": [
           "Reassess project state instead of following a hard-coded task list.",
@@ -278,7 +309,7 @@
       "items": [
         "Created the about-page outline, tightened hero/CTA options with a recommendation to use a combined Start Here destination first, defined the Start Here hub structure, created a first-visit flow draft, and made the public gates minimal-text only.",
         "Improved heartbeat rules so interrupted tasks can be resumed after heartbeat-critical work finishes and so GitHub-visible updates trigger a message with a link.",
-        "Tightened the Thriving Dancer project heartbeat cadence to every 30 minutes, created a local Start Here prototype, added a launch sequencing recommendation, and added explicit per-track dashboard status expectations."
+        "Tightened the Thriving Dancer project heartbeat cadence first to every 30 minutes and later to every 15 minutes, created a local Start Here prototype, added a launch sequencing recommendation, and added explicit per-track dashboard status expectations."
       ]
     }
   ],
@@ -470,7 +501,28 @@
       "kind": "ops",
       "status": "done",
       "title": "Added recent heartbeat breadcrumbs",
-      "detail": "Added visible recent-heartbeat summaries, quality labels, and last-run metadata to the dashboard feed so the 30-minute project heartbeat leaves visible evidence instead of disappearing into background execution."
+      "detail": "Added visible recent-heartbeat summaries, quality labels, and last-run metadata to the dashboard feed so the project heartbeat leaves visible evidence instead of disappearing into background execution."
+    },
+    {
+      "when": "2026-04-06 13:38 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Started publishing homepage -> Start Here path",
+      "detail": "Staged the local homepage and `start-here.html` for GitHub Pages so the cleaner public visitor flow could move from local-only into the live site."
+    },
+    {
+      "when": "2026-04-06 13:39 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Published homepage -> Start Here path",
+      "detail": "Committed the homepage CTA/nav update and the standalone Start Here page to the GitHub Pages repo, then sent Kirill the homepage, Start Here, and dashboard links on Telegram."
+    },
+    {
+      "when": "2026-04-06 14:36 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Changed heartbeat cadence to 15 minutes and tightened blocker status visibility",
+      "detail": "Updated the actual Thriving Dancer cron from every 30 minutes to every 15 minutes and changed dashboard blockers to carry explicit status plus communicated-to-Kirill visibility."
     }
   ],
   "docs": [

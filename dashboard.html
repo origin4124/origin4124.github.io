@@ -350,10 +350,12 @@
 
       blockers.innerHTML = data.blockers.map(b => `
         <div class="item">
-          <strong>${b.label}</strong>
+          <div><strong>${b.label}</strong>${renderTag(b.status || 'active')}</div>
           <div class="small">${b.detail}</div>
           <div class="sev-${b.severity}">${b.severity} severity</div>
+          <div class="small muted">Communicated to Kirill: ${b.communicatedToKirill ? 'yes' : 'no'}${b.communication?.channel ? ` • via ${b.communication.channel}` : ''}${b.communication?.when ? ` • ${b.communication.when}` : ''}</div>
           <div class="small muted">Telegram alert sent: ${b.telegramAlertSent ? 'yes' : 'no'}</div>
+          ${b.communication?.summary ? `<div class="small muted">${b.communication.summary}</div>` : ''}
         </div>
       `).join('');
 
@@ -436,6 +438,7 @@
         <div class="item"><strong>Retry-after-interruption</strong><div class="small">If heartbeat-critical work interrupts a bounded task, check afterward and retry or resume it when it is still safe and useful.</div></div>
         <div class="item"><strong>Browser tab maintenance</strong><div class="small">Keep one necessary tab per recurring site unless multiple tabs are actively required.</div></div>
         <div class="item"><strong>Quiet-hours email rule</strong><div class="small">Skip email checks from 11:00 PM to 10:00 AM local time.</div></div>
+        <div class="item"><strong>Thriving Dancer heartbeat cadence</strong><div class="small">Every 15 minutes.</div></div>
       `;
 
       links.innerHTML = `
