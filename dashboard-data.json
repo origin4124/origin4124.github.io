@@ -1,6 +1,6 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-06T10:10:00-04:00",
+  "updatedAt": "2026-04-06T13:08:00-04:00",
   "currentPath": {
     "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
@@ -16,19 +16,19 @@
       "status": "active",
       "summary": "Trista has already replied with the strongest founder answers so far, and that material is currently being turned into launch sequencing and content decisions.",
       "lastAction": "Communicated with Trista by email; she replied with audience, launch-channel, product, urgency, and long-term direction details, which were distilled into planning docs and a launch sequencing recommendation.",
-      "assessment": "I am not currently blocked on Trista for the present step. I already have enough signal to keep shaping the first release, and any next outreach should be narrower and tactical rather than broad discovery.",
-      "nextMove": "Use the new first-content-topics shortlist to decide whether the first public release should expose one dancer topic and one parent topic immediately or show the lanes first with placeholders.",
+      "assessment": "I am not currently blocked on Trista for the present step. I already have enough signal to keep shaping the first release, and any next outreach should be narrower and tactical rather than broad discovery. When communicating with her, the default should now be replying in the known working thread instead of fresh compose.",
+      "nextMove": "Use the new first-content-topics shortlist to decide whether the first public release should expose one dancer topic and one parent topic immediately or show the lanes first with placeholders, and use the known working Trista thread for the next resend/acknowledgment.",
       "dependency": "Not currently waiting on Trista for the current step.",
-      "updatedAt": "2026-04-06 10:10 EDT"
+      "updatedAt": "2026-04-06 12:35 EDT"
     },
     {
       "name": "Systems / prototype build",
       "status": "active",
       "summary": "The Start Here concept has moved from planning into a concrete local prototype and is ready to become the next public-facing implementation step.",
-      "lastAction": "Built `start-here-prototype.html` and decided the best first implementation is a standalone Start Here page before fully rewiring the homepage.",
-      "assessment": "The highest-value build move now is to convert the local prototype into a small GitHub-visible page change and wire the homepage CTA toward it.",
-      "nextMove": "Prepare a publish-ready Start Here page and wire the homepage CTA into that path.",
-      "updatedAt": "2026-04-06 09:45 EDT"
+      "lastAction": "Wired the local homepage navigation and primary CTA toward `start-here.html`, so the homepage now points at a real Start Here destination instead of an unrelated section.",
+      "assessment": "The local build path is cleaner now: homepage -> Start Here is wired. The next valuable build move is publishing both files to GitHub Pages and verifying the public flow.",
+      "nextMove": "Publish the homepage and `start-here.html` to GitHub Pages, then verify the live CTA flow and notify Kirill with links.",
+      "updatedAt": "2026-04-06 12:08 EDT"
     },
     {
       "name": "Dashboard / visibility / reporting",
@@ -85,9 +85,9 @@
     },
     {
       "label": "Outlook reliability",
-      "detail": "Outlook Web has been flaky under network drops, and replies can fall into draft state instead of sending unless verified carefully.",
-      "severity": "medium",
-      "telegramAlertSent": false
+      "detail": "Outlook Web was flaky on the fresh-compose path earlier, but the resend through the existing known-working Trista thread completed cleanly around 12:39 PM EDT. The reliability concern remains real, but the immediate morning-report communication loop is no longer blocked.",
+      "severity": "low",
+      "telegramAlertSent": true
     },
     {
       "label": "Native channel runtime",
@@ -129,6 +129,50 @@
   },
   "automation": {
     "summary": "Current autonomous activity and heartbeat behavior that keeps the project and ops surfaces moving across discovery and systems/prototype tracks.",
+    "heartbeatQuality": {
+      "standard": "Each Thriving Dancer heartbeat should try to leave one meaningful bounded advance; pure status confirmation is a weak pass unless real blockers or comms/recovery work consumed the run.",
+      "weakPassPolicy": "If a pass only confirms status, treat it as weak and bias the next pass toward a stronger bounded move.",
+      "visibilityExpectation": "Heartbeat breadcrumbs should show what the run attempted and whether it was meaningful or weak."
+    },
+    "lastHeartbeatAt": "2026-04-06 13:05 EDT",
+    "lastHeartbeatSummary": "Improved dashboard visibility by adding recent-heartbeat breadcrumbs to the dashboard feed and renderer so 30-minute runs leave visible evidence.",
+    "recentHeartbeats": [
+      {
+        "when": "2026-04-06 13:05 EDT",
+        "quality": "meaningful",
+        "track": "dashboard / visibility",
+        "attempted": "Make heartbeat execution visible on the dashboard instead of inferential.",
+        "result": "Added recent-heartbeat breadcrumb structures to the dashboard feed and renderer so recent runs can be seen directly."
+      },
+      {
+        "when": "2026-04-06 12:35 EDT",
+        "quality": "meaningful",
+        "track": "ops / comms",
+        "attempted": "Retry Trista visibility communication through the known-working thread.",
+        "result": "Resent the update in the existing Trista thread and verified a clean replied state instead of the earlier fresh-compose failure."
+      },
+      {
+        "when": "2026-04-06 12:05 EDT",
+        "quality": "meaningful",
+        "track": "systems / prototype build",
+        "attempted": "Strengthen the homepage visitor path.",
+        "result": "Wired the local homepage nav and primary CTA toward the real Start Here page."
+      },
+      {
+        "when": "2026-04-06 11:35 EDT",
+        "quality": "weak",
+        "track": "ops / state confirmation",
+        "attempted": "Check due work and current blocker state.",
+        "result": "Mostly confirmed the unresolved Trista email blocker and did not leave a strong project artifact; this is now treated as a weak pass example."
+      },
+      {
+        "when": "2026-04-06 11:05 EDT",
+        "quality": "meaningful",
+        "track": "discovery / workflow rules",
+        "attempted": "Convert Kirill’s Trista-email behavior preference into a durable rule.",
+        "result": "Made the reply-with-acknowledgment-and-follow-up behavior durable in HEARTBEAT.md and MEMORY.md."
+      }
+    ],
     "tabState": {
       "lastNormalizedAt": "2026-04-06 08:35 EDT",
       "topLevelPageTabs": [
@@ -199,6 +243,7 @@
         "purpose": "Give Trista direct morning visibility into project progress, active track status, and the dashboard link.",
         "currentBehavior": [
           "Send a concise morning report covering active track status, latest meaningful progress, what is being assessed or built now, and immediate next moves.",
+          "Prefer replying in the existing known-working Trista thread instead of starting a fresh standalone compose when practical.",
           "Include the dashboard link in the report.",
           "Verify the send because Outlook can be flaky and may leave drafts under poor network conditions."
         ]
@@ -384,6 +429,48 @@
       "status": "done",
       "title": "Created first content topics shortlist",
       "detail": "Turned the vague first-content question into a concrete v1 shortlist of five dancer topics and three parent topics for the earliest written guidance lanes."
+    },
+    {
+      "when": "2026-04-06 10:38 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Created publish-ready Start Here page",
+      "detail": "Converted the local prototype into `start-here.html`, a cleaner standalone page intended to become the homepage's first real CTA destination."
+    },
+    {
+      "when": "2026-04-06 12:08 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Wired homepage CTA to Start Here locally",
+      "detail": "Updated the local homepage nav and primary CTA so the public-facing path can become homepage -> Start Here instead of dropping visitors into an unrelated section."
+    },
+    {
+      "when": "2026-04-06 12:35 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Made Trista thread reuse a durable rule",
+      "detail": "Locked in the rule to use the existing known-working Trista email thread by default and confirmed project records still reflect the 30-minute Thriving Dancer heartbeat cadence."
+    },
+    {
+      "when": "2026-04-06 12:39 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Resent Trista update in the working thread",
+      "detail": "Retried the daily/update-style message inside the existing known-working Trista thread; Outlook closed the reply composer cleanly and marked the thread as replied, which was materially better than the earlier failed fresh-compose path."
+    },
+    {
+      "when": "2026-04-06 12:49 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Hardened heartbeat significance rule",
+      "detail": "Raised the Thriving Dancer heartbeat quality bar so each run should aim for a meaningful bounded advance, not just passive status confirmation, and added weak-pass visibility expectations to the project records."
+    },
+    {
+      "when": "2026-04-06 13:08 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Added recent heartbeat breadcrumbs",
+      "detail": "Added visible recent-heartbeat summaries, quality labels, and last-run metadata to the dashboard feed so the 30-minute project heartbeat leaves visible evidence instead of disappearing into background execution."
     }
   ],
   "docs": [
@@ -439,7 +526,13 @@
       "title": "Start Here prototype",
       "path": "projects/thriving-dancer/start-here-prototype.html",
       "kind": "prototype",
-      "note": "Concrete local page prototype for the next public-facing implementation step."
+      "note": "Concrete local page prototype that led to the publish-ready Start Here page."
+    },
+    {
+      "title": "Start Here page",
+      "path": "projects/thriving-dancer/start-here.html",
+      "kind": "build",
+      "note": "Publish-ready standalone Start Here page for the next GitHub-visible implementation step."
     }
   ],
   "links": {

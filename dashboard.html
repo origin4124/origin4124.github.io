@@ -95,6 +95,8 @@
     .track-meta { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; flex-wrap:wrap; margin-bottom: 10px; }
     .track-card h3 { margin-bottom: 6px; }
     .track-card .line-label { color: #f4d6ff; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+    .docs-list { display:grid; gap: 12px; }
+    .doc-kind { display:inline-block; margin-left:8px; padding: 5px 9px; border-radius: 999px; font-size: .75rem; background: rgba(143,125,255,0.18); color:#efe9ff; }
     .log-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
     .log-kind { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: #f4d6ff; }
     .log-when { color: var(--muted); font-size: .9rem; }
@@ -192,6 +194,7 @@
             <section class="card">
               <h2>Heartbeat / automation visibility</h2>
               <p class="small" id="automationSummary"></p>
+              <div id="heartbeatStatus" class="stack"></div>
               <div id="automationItems" class="stack"></div>
             </section>
             <section class="card">
@@ -219,6 +222,11 @@
             <section class="card links">
               <h2>Project links</h2>
               <div id="links"></div>
+            </section>
+            <section class="card">
+              <h2>Docs & artifacts</h2>
+              <p class="small">Browse the key working documents and prototypes behind the current project state.</p>
+              <div id="docs" class="docs-list"></div>
             </section>
             <section class="card">
               <h2>Ops notes</h2>
@@ -324,6 +332,10 @@
             <strong>Next move</strong>
             <div class="small">${track.nextMove || '—'}</div>
           </div>
+          <div class="item">
+            <strong>Dependency state</strong>
+            <div class="small">${track.dependency || 'No special dependency note recorded.'}</div>
+          </div>
         </div>
       `).join('');
 
@@ -384,6 +396,23 @@
       `).join('');
 
       automationSummary.textContent = data.automation?.summary || '';
+      heartbeatStatus.innerHTML = data.automation?.recentHeartbeats ? `
+        <div class="mini-card">
+          <h3>Recent heartbeat runs</h3>
+          <p class="small">Last heartbeat: ${data.automation.lastHeartbeatAt || '—'}</p>
+          <p class="small">${data.automation.lastHeartbeatSummary || ''}</p>
+          <div class="stack">
+            ${(data.automation.recentHeartbeats || []).map(run => `
+              <div class="item">
+                <div><strong>${run.when}</strong>${renderTag(run.quality)}</div>
+                <div class="small"><strong>Track:</strong> ${run.track || '—'}</div>
+                <div class="small"><strong>Attempted:</strong> ${run.attempted || '—'}</div>
+                <div class="small"><strong>Result:</strong> ${run.result || '—'}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : '';
       const tabStateCard = data.automation?.tabState ? `
         <div class="mini-card">
           <h3>Current tab state</h3>
@@ -415,6 +444,18 @@
         <div class="item"><strong>GitHub repo</strong><div><a href="${data.links.repo}" target="_blank">${data.links.repo}</a></div></div>
         <div class="item"><strong>Workspace folder</strong><div class="small">${data.links.projectFolder}</div></div>
       `;
+
+      docs.innerHTML = (data.docs || []).map(doc => `
+        <div class="log-entry">
+          <div class="log-top">
+            <div>
+              <strong>${doc.title}</strong><span class="doc-kind">${doc.kind}</span>
+            </div>
+          </div>
+          <div class="small">${doc.note || ''}</div>
+          <div class="small muted">${doc.path}</div>
+        </div>
+      `).join('');
 
       opsNotes.innerHTML = `
         <div class="item"><strong>Public gate status</strong><div class="small">Homepage and dashboard gates are both minimal-text passcode screens locally.</div></div>
