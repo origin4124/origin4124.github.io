@@ -85,6 +85,16 @@
     .log-entry, .mini-card {
       border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; background: rgba(255,255,255,0.04);
     }
+    .track-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .track-card {
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255,255,255,0.045);
+    }
+    .track-meta { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; flex-wrap:wrap; margin-bottom: 10px; }
+    .track-card h3 { margin-bottom: 6px; }
+    .track-card .line-label { color: #f4d6ff; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
     .log-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
     .log-kind { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: #f4d6ff; }
     .log-when { color: var(--muted); font-size: .9rem; }
@@ -93,7 +103,7 @@
     .date { font-weight: 800; margin-bottom: 6px; }
     .interval { display:inline-block; margin-top:8px; padding: 6px 10px; border-radius: 999px; background: rgba(143,125,255,0.18); color: #efe9ff; font-size: .82rem; }
     @media (max-width: 980px) {
-      .stats, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .stats, .grid-2, .grid-3, .track-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -135,6 +145,11 @@
         <section id="tab-overview" class="tab-panel active">
           <div class="grid-2">
             <div class="stack">
+              <section class="card">
+                <h2>Track status</h2>
+                <p class="small">Each active track should show where it is right now, what happened last, and what comes next.</p>
+                <div id="trackStatus" class="track-grid"></div>
+              </section>
               <section class="card">
                 <h2>Current path</h2>
                 <p id="pathSummary"></p>
@@ -285,6 +300,33 @@
       pathSummary.textContent = data.currentPath.summary;
       pathFocus.innerHTML = data.currentPath.focus.map(x => `<li>${x}</li>`).join('');
 
+      trackStatus.innerHTML = (data.trackStatus || []).map(track => `
+        <div class="track-card">
+          <div class="track-meta">
+            <div>
+              <div class="line-label">${track.name}</div>
+              <h3>${track.summary}</h3>
+            </div>
+            <div>
+              ${renderTag(track.status)}
+              <div class="log-when">${track.updatedAt || ''}</div>
+            </div>
+          </div>
+          <div class="item">
+            <strong>Last action</strong>
+            <div class="small">${track.lastAction || '—'}</div>
+          </div>
+          <div class="item">
+            <strong>Current assessment</strong>
+            <div class="small">${track.assessment || '—'}</div>
+          </div>
+          <div class="item">
+            <strong>Next move</strong>
+            <div class="small">${track.nextMove || '—'}</div>
+          </div>
+        </div>
+      `).join('');
+
       nextSteps.innerHTML = data.nextSteps.map(step => `
         <div class="item">
           <div><strong>${step.title}</strong>${renderTag(step.status)}</div>
@@ -342,7 +384,16 @@
       `).join('');
 
       automationSummary.textContent = data.automation?.summary || '';
-      automationItems.innerHTML = (data.automation?.items || []).map(item => `
+      const tabStateCard = data.automation?.tabState ? `
+        <div class="mini-card">
+          <h3>Current tab state</h3>
+          <div class="interval">${data.automation.tabState.status}</div>
+          <p class="small">Last normalized: ${data.automation.tabState.lastNormalizedAt}</p>
+          <ul>${(data.automation.tabState.topLevelPageTabs || []).map(x => `<li>${x}</li>`).join('')}</ul>
+          <p class="small">${data.automation.tabState.notes || ''}</p>
+        </div>
+      ` : '';
+      automationItems.innerHTML = tabStateCard + (data.automation?.items || []).map(item => `
         <div class="mini-card">
           <h3>${item.name}</h3>
           <div class="interval">${item.interval}</div>

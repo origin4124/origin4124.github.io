@@ -1,6 +1,6 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-06T07:44:00-04:00",
+  "updatedAt": "2026-04-06T09:56:00-04:00",
   "currentPath": {
     "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
@@ -10,21 +10,50 @@
       "Keep heartbeat/autonomous activity visible enough that Kirill can tell what is running and why."
     ]
   },
+  "trackStatus": [
+    {
+      "name": "Discovery / founder signal",
+      "status": "active",
+      "summary": "Assessing Trista's replies and turning them into clearer launch sequencing and product decisions.",
+      "lastAction": "Trista replied with stronger founder answers, and those answers were distilled into planning docs plus a launch sequencing recommendation.",
+      "assessment": "The broad discovery phase is productive enough now that the remaining questions should narrow toward launch order, first content topics, and offer sequencing rather than broad identity questions.",
+      "nextMove": "Choose the first 3-5 dancer topics and 2-3 parent topics that should become the earliest live guidance content.",
+      "updatedAt": "2026-04-06 09:46 EDT"
+    },
+    {
+      "name": "Systems / prototype build",
+      "status": "active",
+      "summary": "The Start Here concept has moved from planning into a concrete local prototype and is ready to become the next public-facing implementation step.",
+      "lastAction": "Built `start-here-prototype.html` and decided the best first implementation is a standalone Start Here page before fully rewiring the homepage.",
+      "assessment": "The highest-value build move now is to convert the local prototype into a small GitHub-visible page change and wire the homepage CTA toward it.",
+      "nextMove": "Prepare a publish-ready Start Here page and wire the homepage CTA into that path.",
+      "updatedAt": "2026-04-06 09:45 EDT"
+    },
+    {
+      "name": "Dashboard / visibility / reporting",
+      "status": "active",
+      "summary": "The dashboard is being upgraded from a project log into a clearer status surface that shows where each track stands right now.",
+      "lastAction": "Added heartbeat/automation visibility, latest-first project log behavior, and now explicit per-track status requirements.",
+      "assessment": "The dashboard should answer 'where are you at right now?' without forcing Kirill to infer it from logs or chat history.",
+      "nextMove": "Publish the new per-track status view to GitHub Pages and send Kirill the dashboard link once the change is visible.",
+      "updatedAt": "2026-04-06 09:56 EDT"
+    }
+  ],
   "nextSteps": [
     {
-      "title": "Turn Start Here into a first simple prototype",
-      "why": "The launch checklist now exists, so the next useful move is converting the routing plan into a concrete page or section draft.",
+      "title": "Turn the Start Here prototype into the next public-facing release",
+      "why": "A local Start Here prototype now exists, so the next useful move is deciding the smallest GitHub-visible implementation and wiring the homepage CTA into it.",
       "status": "active"
     },
     {
-      "title": "Add heartbeat/activity visibility to the live dashboard UI",
-      "why": "Kirill wants to see what runs, how often, and what the assistant is doing without digging through chat.",
+      "title": "Publish the dashboard's new per-track status layer",
+      "why": "Kirill wants to see each track's current state, last action, assessment, and next move directly on the dashboard.",
       "status": "active"
     },
     {
-      "title": "Recommend the first concrete launch asset",
-      "why": "The next product decision is still workbook vs. unit study vs. podcast/blog-first sequencing.",
-      "status": "queued"
+      "title": "Use launch sequencing to narrow the first content release",
+      "why": "A sequencing recommendation now exists; the next discovery move is narrowing which first dancer/parent content pieces should go live earliest.",
+      "status": "active"
     },
     {
       "title": "Continue direct email discovery only for tactical follow-up questions",
@@ -41,15 +70,15 @@
     "Established direct email communication with Trista.",
     "Captured a strong first signal set from Trista: credentials, performance history, teaching background, founder role, age 3–14 mission focus, growth mindset, developmentally appropriate training, and whole-person philosophy.",
     "Captured clearer founder answers: first audience = pre-professional dancers ages 10–16, first launch = podcast + blog, early products = workbook + ballet unit study, and the studio software lane is both internal and potentially product-facing later.",
-    "Set up a 1-hour autonomous Thriving Dancer assessment heartbeat to decide and take the next bounded project step.",
+    "Set up a 30-minute autonomous Thriving Dancer assessment heartbeat to decide and take the next bounded project step.",
     "Built and published a live Thriving Dancer project dashboard at /dashboard.html.",
     "Updated the homepage and dashboard gates to minimal text only.",
-    "Created a working discovery brief, Planning Pack v1, website/content architecture draft, homepage copy draft, about-page outline, hero/CTA options, Start Here hub structure, first-visit flow draft, and first public launch checklist inside the project folder."
+    "Created a working discovery brief, Planning Pack v1, website/content architecture draft, homepage copy draft, about-page outline, hero/CTA options, Start Here hub structure, first-visit flow draft, first public launch checklist, local Start Here prototype, and launch sequencing recommendation inside the project folder."
   ],
   "blockers": [
     {
-      "label": "Dashboard/homepage gate propagation",
-      "detail": "The homepage and dashboard both have the minimal passcode gate locally now, but public GitHub Pages propagation may lag briefly after updates.",
+      "label": "Dashboard/homepage publication lag",
+      "detail": "Local dashboard and homepage changes still need explicit GitHub Pages publication and brief propagation time before they are actually visible publicly.",
       "severity": "low",
       "telegramAlertSent": false
     },
@@ -85,6 +114,12 @@
         "event": "Homepage proof-of-concept was updated to use the same light passphrase gate as the dashboard.",
         "sent": true,
         "link": "https://origin4124.github.io/"
+      },
+      {
+        "when": "2026-04-06 08:03 EDT",
+        "event": "Published the tabbed dashboard, heartbeat/automation visibility, and minimal-text gates to GitHub Pages.",
+        "sent": true,
+        "link": "https://origin4124.github.io/dashboard.html"
       }
     ],
     "reviewReadyPolicy": "Ping Kirill on Telegram when review is ready and again when the full loop is complete for important operations.",
@@ -92,11 +127,21 @@
     "githubVisibilityRule": "When GitHub-hosted pages change in a way that gives Kirill something new to see, send a concise message with the relevant link after the change is live or reasonably visible."
   },
   "automation": {
-    "summary": "Current autonomous activity and heartbeat behavior that keeps the project and ops surfaces moving.",
+    "summary": "Current autonomous activity and heartbeat behavior that keeps the project and ops surfaces moving across discovery and systems/prototype tracks.",
+    "tabState": {
+      "lastNormalizedAt": "2026-04-06 08:35 EDT",
+      "topLevelPageTabs": [
+        "Outlook",
+        "GitHub repo",
+        "Public site"
+      ],
+      "status": "normalized",
+      "notes": "Service workers, shared workers, and iframe noise are ignored; cleanup focuses on top-level page tabs."
+    },
     "items": [
       {
         "name": "Thriving Dancer project heartbeat",
-        "interval": "Every 1 hour",
+        "interval": "Every 30 minutes",
         "purpose": "Assess project state, choose the most useful bounded next step, and make concrete progress.",
         "currentBehavior": [
           "Reassess project state instead of following a hard-coded task list.",
@@ -139,10 +184,11 @@
       {
         "name": "Browser tab maintenance",
         "interval": "Applied during heartbeat and overnight work",
-        "purpose": "Keep one necessary tab per recurring site unless multiple tabs are actively required.",
+        "purpose": "Normalize recurring top-level page tabs so browser state stays clean and predictable.",
         "currentBehavior": [
-          "Close extra Outlook, GitHub, Telegram API, and other recurring tabs.",
-          "Keep a single useful tab open when possible.",
+          "Close extra Outlook, GitHub, Telegram API, and other recurring top-level page tabs.",
+          "Close blank/new-tab pages when not needed.",
+          "Ignore worker/service-worker noise unless debugging.",
           "Prefer a clean working browser state over tab buildup."
         ]
       }
@@ -175,7 +221,8 @@
       "date": "2026-04-06",
       "items": [
         "Created the about-page outline, tightened hero/CTA options with a recommendation to use a combined Start Here destination first, defined the Start Here hub structure, created a first-visit flow draft, and made the public gates minimal-text only.",
-        "Improved heartbeat rules so interrupted tasks can be resumed after heartbeat-critical work finishes and so GitHub-visible updates trigger a message with a link."
+        "Improved heartbeat rules so interrupted tasks can be resumed after heartbeat-critical work finishes and so GitHub-visible updates trigger a message with a link.",
+        "Tightened the Thriving Dancer project heartbeat cadence to every 30 minutes, created a local Start Here prototype, added a launch sequencing recommendation, and added explicit per-track dashboard status expectations."
       ]
     }
   ],
@@ -291,6 +338,27 @@
       "status": "done",
       "title": "Added interruption-retry and GitHub visibility rules",
       "detail": "Updated heartbeat guidance so interrupted bounded tasks can be retried after heartbeat-critical work and GitHub-visible updates should trigger a concise message with a link."
+    },
+    {
+      "when": "2026-04-06 09:45 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Created local Start Here prototype",
+      "detail": "Built a concrete Start Here page prototype to turn routing logic into a reviewable UI and support the next public-facing implementation step."
+    },
+    {
+      "when": "2026-04-06 09:46 EDT",
+      "kind": "discovery",
+      "status": "done",
+      "title": "Added launch sequencing recommendation",
+      "detail": "Turned the founder signal into a concrete recommendation for homepage -> Start Here -> About -> first blog lanes, with podcast following after the written guidance lanes are established."
+    },
+    {
+      "when": "2026-04-06 09:56 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Added explicit per-track dashboard status",
+      "detail": "Defined a clearer dashboard model so each active track exposes its current status, last action, current assessment, next move, and last updated time."
     }
   ],
   "links": {
