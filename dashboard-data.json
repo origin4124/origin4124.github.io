@@ -1,6 +1,6 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-06T14:36:00-04:00",
+  "updatedAt": "2026-04-06T17:35:00-04:00",
   "currentPath": {
     "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
@@ -24,36 +24,36 @@
     {
       "name": "Systems / prototype build",
       "status": "active",
-      "summary": "The homepage -> Start Here visitor path is now published, but the dashboard feed itself still needs a clean catch-up publish so public status matches local reality.",
-      "lastAction": "Published the homepage CTA/nav update and the standalone Start Here page to GitHub Pages, then sent Kirill the links on Telegram.",
-      "assessment": "The current build-side gap is not the visitor path anymore; it is dashboard/public-state lag. The public site path improved, but the dashboard feed still under-reports the newest progress until the newer dashboard-data publish lands cleanly.",
-      "nextMove": "Publish the updated dashboard-data.json cleanly so the public dashboard catches up to the local project state.",
-      "updatedAt": "2026-04-06 14:36 EDT"
+      "summary": "Both primary audience lanes now have a first real long-form article draft locally, so the site is starting to become actual guidance instead of mostly placeholders.",
+      "lastAction": "Drafted /blog/how-parents-can-support-a-serious-young-dancer-without-over-managing.html and linked it from the parent guidance lane locally.",
+      "assessment": "The content lanes are now deep enough to justify a publish pass. The next useful move is bundling the refreshed dashboard feed with both new article pages and their updated lane hubs so Kirill has something materially new to review.",
+      "nextMove": "Publish the two first-article pages, the refreshed lane hubs, and the updated dashboard feed to GitHub Pages, then notify Kirill with the links.",
+      "updatedAt": "2026-04-06 17:20 EDT"
     },
     {
       "name": "Dashboard / visibility / reporting",
       "status": "active",
-      "summary": "The dashboard now has recent-heartbeat breadcrumbs locally, but blocker and freshness visibility still needed tightening so Kirill can trust what he sees.",
-      "lastAction": "Changed the dashboard model so blockers explicitly carry status plus communicated-to-Kirill state, and updated the heartbeat cadence records from 30 minutes to 15 minutes.",
-      "assessment": "The main visibility problem is no longer lack of local records; it is incomplete public synchronization plus blocker presentation that was too implicit.",
-      "nextMove": "Publish the dashboard catch-up update and confirm the public dashboard shows the new blocker-state fields and the 15-minute heartbeat cadence.",
-      "updatedAt": "2026-04-06 14:36 EDT"
+      "summary": "The dashboard is being reworked into a more honest command surface: blockers get their own tab, Start Here should be directly visible, and public sync state should stop being implicit.",
+      "lastAction": "Updated the local dashboard structure to add a dedicated blockers tab, a visible Start Here link, and an explicit publish/QA state section.",
+      "assessment": "The main visibility failure was not lack of work but lack of explicit public-sync truthfulness. The dashboard now needs a republish plus public QA so Kirill can trust it again.",
+      "nextMove": "Publish the updated dashboard, dashboard-data feed, refreshed lane pages, and first article pages; then verify the real public URLs and feed timestamps before calling it done.",
+      "updatedAt": "2026-04-06 17:35 EDT"
     }
   ],
   "nextSteps": [
     {
-      "title": "Publish the dashboard catch-up feed",
-      "why": "The public dashboard still lags behind the local state, which is exactly why Kirill could not see recent progress after 12:35 PM EDT.",
+      "title": "Republish dashboard + article pages + lane hubs with strict public QA",
+      "why": "The dashboard and page work is no longer enough locally; the current highest-value move is to get public state caught up and verified so 404s or stale feed drift cannot hide again.",
       "status": "active"
     },
     {
-      "title": "Turn the first-content shortlist into real CTA destinations",
-      "why": "The initial dancer/parent topic shortlist now exists, so the next discovery/build move is deciding whether to expose one real topic per lane or placeholder lane pages first.",
+      "title": "Keep blockers in a dedicated dashboard tab and make Start Here visible from the command surface",
+      "why": "Kirill asked for blocker visibility without scrolling and for Start Here to be reachable directly from the dashboard.",
       "status": "active"
     },
     {
-      "title": "Continue direct email discovery only for tactical follow-up questions",
-      "why": "Broad discovery improved a lot; remaining questions are now narrower and sequencing-oriented.",
+      "title": "Treat Trista outbound email as unreliable until a better channel or Gmail fallback is ready",
+      "why": "Trista reported not seeing the earlier attempted update, so Outlook UI state is not trustworthy as delivery proof right now.",
       "status": "queued"
     }
   ],
@@ -70,21 +70,23 @@
     "Built and published a live Thriving Dancer project dashboard at /dashboard.html.",
     "Updated the homepage and dashboard gates to minimal text only.",
     "Created a working discovery brief, Planning Pack v1, website/content architecture draft, homepage copy draft, about-page outline, hero/CTA options, Start Here hub structure, first-visit flow draft, first public launch checklist, local Start Here prototype, and launch sequencing recommendation inside the project folder.",
-    "Published the homepage -> Start Here visitor path to GitHub Pages and notified Kirill with links."
+    "Published the homepage -> Start Here visitor path to GitHub Pages and notified Kirill with links.",
+    "Drafted the first real dancer-facing article, What pre-professional ballet training actually asks of you, and linked it from the dancer guidance lane locally.",
+    "Drafted the first real parent-facing article, How parents can support a serious young dancer without over-managing, and linked it from the parent guidance lane locally."
   ],
   "blockers": [
     {
       "label": "Public dashboard feed is behind local state",
       "status": "active",
-      "detail": "Local project records and heartbeat breadcrumbs now extend past 12:35 PM EDT, but the public dashboard feed is still behind because the newer dashboard-data.json catch-up publish did not complete cleanly yet.",
+      "detail": "Local dashboard state has advanced to include the first article drafts and newer heartbeat breadcrumbs, but the public dashboard feed is still behind and needs a clean republish plus verification. This remains active until the public dashboard-data.json timestamp and page behavior match the newer local state.",
       "severity": "medium",
       "communicatedToKirill": true,
       "communication": {
         "channel": "webchat",
-        "when": "2026-04-06 14:21 EDT",
-        "summary": "Explained that progress since 12:35 PM EDT existed locally, but the public dashboard feed had not fully caught up yet."
+        "when": "2026-04-06 17:27 EDT",
+        "summary": "Confirmed directly that the public dashboard was still stale at 14:36 EDT while local state had advanced to 17:20 EDT, and explained that publish/verification was the lagging step."
       },
-      "telegramAlertSent": false
+      "telegramAlertSent": true
     },
     {
       "label": "Outlook reliability",
@@ -144,6 +146,12 @@
         "event": "Published the homepage -> Start Here visitor path to GitHub Pages.",
         "sent": true,
         "link": "https://origin4124.github.io/start-here.html"
+      },
+      {
+        "when": "2026-04-06 16:40 EDT",
+        "event": "Published the three-lane Start Here scaffold to GitHub Pages.",
+        "sent": true,
+        "link": "https://origin4124.github.io/start-here.html"
       }
     ],
     "reviewReadyPolicy": "Ping Kirill on Telegram when review is ready and again when the full loop is complete for important operations.",
@@ -157,15 +165,85 @@
       "weakPassPolicy": "If a pass only confirms status, treat it as weak and bias the next pass toward a stronger bounded move.",
       "visibilityExpectation": "Heartbeat breadcrumbs should show what the run attempted and whether it was meaningful or weak."
     },
-    "lastHeartbeatAt": "2026-04-06 14:05 EDT",
-    "lastHeartbeatSummary": "The 14:05 PM EDT heartbeat finished the homepage -> Start Here publish loop and then revealed that the public dashboard feed itself was still behind the newer local project state.",
+    "lastHeartbeatAt": "2026-04-06 17:35 EDT",
+    "lastHeartbeatSummary": "The 17:35 PM EDT heartbeat hardened the dashboard structure around blocker visibility and public-sync honesty instead of leaving blockers buried in the overview.",
     "recentHeartbeats": [
+      {
+        "when": "2026-04-06 17:35 EDT",
+        "quality": "meaningful",
+        "track": "dashboard / visibility hardening",
+        "attempted": "Turn blockers and publish-state visibility into explicit dashboard surfaces instead of leaving them buried or implied.",
+        "result": "Updated the local dashboard to add a dedicated blockers tab, a visible Start Here link, and an explicit publish / QA state section; marked the public dashboard lag blocker active again until republish plus verification passes."
+      },
+      {
+        "when": "2026-04-06 17:20 EDT",
+        "quality": "meaningful",
+        "track": "systems / content build",
+        "attempted": "Create the first real parent-facing article so the content lanes deepen in parallel.",
+        "result": "Drafted /blog/how-parents-can-support-a-serious-young-dancer-without-over-managing.html and updated /blog/parents.html so the parent lane now points at a real long-form guidance page locally."
+      },
+      {
+        "when": "2026-04-06 17:10 EDT",
+        "quality": "meaningful",
+        "track": "planning / release sequencing",
+        "attempted": "Turn the new dancer article draft into a concrete release decision instead of leaving the next publish step ambiguous.",
+        "result": "Created \first-content-release-recommendation.md and updated the dashboard feed so the next public-facing move is to publish the first dancer article and refreshed dashboard data, then deepen the parent lane next."
+      },
+      {
+        "when": "2026-04-06 17:05 EDT",
+        "quality": "meaningful",
+        "track": "systems / content build",
+        "attempted": "Turn the dancer lane from a placeholder into a real article destination.",
+        "result": "Drafted /blog/what-pre-professional-ballet-training-actually-asks-of-you.html and updated /blog/dancers.html so the dancer lane now points at a real long-form guidance page locally."
+      },
+      {
+        "when": "2026-04-06 16:35 EDT",
+        "quality": "meaningful",
+        "track": "systems / publish",
+        "attempted": "Publish the completed three-lane Start Here scaffold to GitHub Pages.",
+        "result": "Published `start-here.html`, `/blog/dancers.html`, `/blog/parents.html`, and `/about.html` to the GitHub Pages repo, then sent Kirill the public lane links on Telegram."
+      },
+      {
+        "when": "2026-04-06 16:20 EDT",
+        "quality": "meaningful",
+        "track": "systems / lane-page build",
+        "attempted": "Create the About/philosophy placeholder page and connect the third Start Here card to it.",
+        "result": "Created `/about.html` and rewired the Start Here third card toward that real destination locally, completing the three-lane scaffold."
+      },
+      {
+        "when": "2026-04-06 16:05 EDT",
+        "quality": "meaningful",
+        "track": "systems / lane-page build",
+        "attempted": "Create the parent-lane placeholder page and connect Start Here to it.",
+        "result": "Created `/blog/parents.html` and rewired the Start Here parent CTA toward that real placeholder destination locally."
+      },
+      {
+        "when": "2026-04-06 15:35 EDT",
+        "quality": "meaningful",
+        "track": "systems / lane-page build",
+        "attempted": "Create the first real destination page for the dancer lane and connect Start Here to it.",
+        "result": "Created `/blog/dancers.html` and rewired the Start Here dancer CTA toward that real placeholder destination locally."
+      },
+      {
+        "when": "2026-04-06 15:05 EDT",
+        "quality": "meaningful",
+        "track": "systems / CTA mapping",
+        "attempted": "Verify the dashboard catch-up landed and convert the first-content shortlist into a concrete destination map.",
+        "result": "Confirmed the public dashboard-data feed is live and created `cta-destination-map-v1.md` to map homepage/Start Here CTAs into real next destination pages."
+      },
+      {
+        "when": "2026-04-06 14:50 EDT",
+        "quality": "meaningful",
+        "track": "dashboard / publish",
+        "attempted": "Finish the public dashboard catch-up publish cleanly.",
+        "result": "Published the newer dashboard feed and renderer with 15-minute cadence visibility, blocker status, communicated-to-Kirill state, and newer heartbeat breadcrumbs."
+      },
       {
         "when": "2026-04-06 14:05 EDT",
         "quality": "meaningful",
         "track": "systems / publish + visibility",
         "attempted": "Complete the public homepage -> Start Here path and assess why the dashboard still looked stale.",
-        "result": "Finished the homepage -> Start Here publish loop, then identified that the public dashboard feed itself was behind the newer local dashboard-data state."
+        "result": "Finished the homepage -> Start Here publish loop and isolated the dashboard-data lag as the remaining visibility blocker."
       },
       {
         "when": "2026-04-06 13:35 EDT",
@@ -314,6 +392,34 @@
     }
   ],
   "projectLog": [
+    {
+      "when": "2026-04-06 17:35 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Hardened dashboard blocker and publish-state visibility",
+      "detail": "Updated the local dashboard so blockers live in their own tab, Start Here is linked directly, and public sync / QA state is shown explicitly instead of being inferred."
+    },
+    {
+      "when": "2026-04-06 17:20 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Drafted first parent-lane long-form article",
+      "detail": "Created /blog/how-parents-can-support-a-serious-young-dancer-without-over-managing.html and updated the parent lane page so the first parent guidance article is now a real local destination."
+    },
+    {
+      "when": "2026-04-06 17:10 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Locked first content-release decision",
+      "detail": "Created \first-content-release-recommendation.md to make the next publish step explicit: publish the first dancer article and refreshed dashboard feed, then build the first parent article next."
+    },
+    {
+      "when": "2026-04-06 17:05 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Drafted first dancer-lane long-form article",
+      "detail": "Created /blog/what-pre-professional-ballet-training-actually-asks-of-you.html and updated the dancer lane page so the first guidance article is now a real local destination."
+    },
     {
       "when": "2026-04-03 17:00 EDT",
       "kind": "direction",
@@ -523,9 +629,69 @@
       "status": "done",
       "title": "Changed heartbeat cadence to 15 minutes and tightened blocker status visibility",
       "detail": "Updated the actual Thriving Dancer cron from every 30 minutes to every 15 minutes and changed dashboard blockers to carry explicit status plus communicated-to-Kirill visibility."
+    },
+    {
+      "when": "2026-04-06 14:54 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Published dashboard catch-up update",
+      "detail": "Committed the newer dashboard feed and renderer so the public dashboard now reflects the 15-minute cadence, blocker status, communicated-to-Kirill state, and recent-heartbeat breadcrumbs."
+    },
+    {
+      "when": "2026-04-06 15:08 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Created CTA destination map v1",
+      "detail": "Turned the first-content shortlist into a concrete destination map for homepage and Start Here CTAs so the next lane-page implementation step is explicit."
+    },
+    {
+      "when": "2026-04-06 15:39 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Created first dancer-lane placeholder page",
+      "detail": "Built `/blog/dancers.html` as the first real lane destination and rewired the Start Here dancer CTA toward it locally."
+    },
+    {
+      "when": "2026-04-06 16:08 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Created first parent-lane placeholder page",
+      "detail": "Built `/blog/parents.html` as the first real parent-lane destination and rewired the Start Here parent CTA toward it locally."
+    },
+    {
+      "when": "2026-04-06 16:23 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Created About/philosophy placeholder page",
+      "detail": "Built `/about.html` as the first real About/philosophy destination and rewired the Start Here third card toward it locally, completing the local three-lane scaffold."
+    },
+    {
+      "when": "2026-04-06 16:40 EDT",
+      "kind": "build",
+      "status": "done",
+      "title": "Published three-lane Start Here scaffold",
+      "detail": "Published the updated Start Here page plus the dancer, parent, and about placeholder pages to GitHub Pages and sent Kirill the public links on Telegram."
     }
   ],
   "docs": [
+    {
+      "title": "First parent article draft",
+      "path": "projects/thriving-dancer/blog/how-parents-can-support-a-serious-young-dancer-without-over-managing.html",
+      "kind": "build",
+      "note": "First real long-form parent guidance article, drafted to turn the parent lane into a substantive destination instead of only a placeholder."
+    },
+    {
+      "title": "First content release recommendation",
+      "path": "projects/thriving-dancer/first-content-release-recommendation.md",
+      "kind": "strategy",
+      "note": "Locks the next release decision: publish the first dancer article now, then follow with the first parent article instead of holding everything at placeholder level."
+    },
+    {
+      "title": "First dancer article draft",
+      "path": "projects/thriving-dancer/blog/what-pre-professional-ballet-training-actually-asks-of-you.html",
+      "kind": "build",
+      "note": "First real long-form dancer guidance article, drafted to turn the dancer lane into a substantive destination instead of only a placeholder."
+    },
     {
       "title": "Discovery brief",
       "path": "projects/thriving-dancer/discovery-brief.md",
@@ -585,12 +751,44 @@
       "path": "projects/thriving-dancer/start-here.html",
       "kind": "build",
       "note": "Publish-ready standalone Start Here page for the next GitHub-visible implementation step."
+    },
+    {
+      "title": "CTA destination map v1",
+      "path": "projects/thriving-dancer/cta-destination-map-v1.md",
+      "kind": "build",
+      "note": "Maps homepage and Start Here CTAs into concrete next destination pages for the dancer, parent, and about lanes."
+    },
+    {
+      "title": "Dancer lane placeholder page",
+      "path": "projects/thriving-dancer/blog/dancers.html",
+      "kind": "build",
+      "note": "First real placeholder destination for the dancer guidance lane, linked from Start Here."
+    },
+    {
+      "title": "Parent lane placeholder page",
+      "path": "projects/thriving-dancer/blog/parents.html",
+      "kind": "build",
+      "note": "First real placeholder destination for the parent guidance lane, linked from Start Here."
+    },
+    {
+      "title": "About/philosophy placeholder page",
+      "path": "projects/thriving-dancer/about.html",
+      "kind": "build",
+      "note": "First real placeholder destination for the About/philosophy lane, linked from Start Here."
     }
   ],
   "links": {
     "liveSite": "https://origin4124.github.io/",
     "dashboard": "https://origin4124.github.io/dashboard.html",
     "repo": "https://github.com/origin4124/origin4124.github.io",
-    "projectFolder": "C:/Users/origi/.openclaw/workspace/projects/thriving-dancer/"
+    "projectFolder": "C:/Users/origi/.openclaw/workspace/projects/thriving-dancer/",
+    "startHere": "https://origin4124.github.io/start-here.html"
+  },
+  "publicSync": {
+    "dashboardMatchesLocal": false,
+    "localDashboardUpdatedAt": "2026-04-06T17:35:00-04:00",
+    "publicDashboardUpdatedAt": "2026-04-06T14:36:00-04:00",
+    "latestPendingPublish": "Updated dashboard structure + dashboard-data catch-up + first dancer/parent article pages + refreshed lane hubs",
+    "qaStatus": "pending public republish and verification"
   }
 }

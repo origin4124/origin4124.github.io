@@ -138,6 +138,7 @@
       <div class="tab-shell">
         <div class="tab-bar" id="tabBar">
           <button class="tab-btn active" data-tab="overview">Overview</button>
+          <button class="tab-btn" data-tab="blockers">Blockers</button>
           <button class="tab-btn" data-tab="activity">Activity</button>
           <button class="tab-btn" data-tab="automation">Automation</button>
           <button class="tab-btn" data-tab="comms">Comms</button>
@@ -164,14 +165,29 @@
             </div>
             <div class="stack">
               <section class="card">
-                <h2>Blockers</h2>
-                <div id="blockers"></div>
+                <h2>Publish / QA state</h2>
+                <div id="publishState"></div>
               </section>
               <section class="card">
                 <h2>Completed / accomplished</h2>
                 <ul id="completed"></ul>
               </section>
             </div>
+          </div>
+        </section>
+
+        <section id="tab-blockers" class="tab-panel">
+          <div class="grid-2">
+            <section class="card">
+              <h2>Current blockers</h2>
+              <p class="small">Separated into its own tab so blocker visibility does not get buried under the rest of the dashboard.</p>
+              <div id="blockers"></div>
+            </section>
+            <section class="card">
+              <h2>Publish / QA checklist</h2>
+              <p class="small">Public-facing work is only complete after publish plus public verification.</p>
+              <div id="qaChecklist"></div>
+            </section>
           </div>
         </section>
 
@@ -359,6 +375,21 @@
         </div>
       `).join('');
 
+      const publicSyncOk = !!data.publicSync?.dashboardMatchesLocal;
+      publishState.innerHTML = `
+        <div class="item"><strong>Local dashboard timestamp</strong><div class="small">${data.updatedAt || '—'}</div></div>
+        <div class="item"><strong>Latest public dashboard timestamp</strong><div class="small">${data.publicSync?.publicDashboardUpdatedAt || 'Unknown / not yet rechecked'}</div></div>
+        <div class="item"><strong>Public sync state</strong><div class="small">${publicSyncOk ? 'Public dashboard is caught up to local state.' : 'Public dashboard is still behind local state or not yet verified after the latest local changes.'}</div></div>
+        <div class="item"><strong>Latest publish target</strong><div class="small">${data.publicSync?.latestPendingPublish || '—'}</div></div>
+      `;
+
+      qaChecklist.innerHTML = `
+        <div class="item"><strong>PM</strong><div class="small">Define the intended public change and the acceptance checks before calling it done.</div></div>
+        <div class="item"><strong>Coder</strong><div class="small">Make the local file changes for the dashboard, pages, routing, or articles.</div></div>
+        <div class="item"><strong>QA</strong><div class="small">Verify the real public URLs, confirm new links do not 404, and confirm public \`dashboard-data.json\` is at least as new as the local version when dashboard data changed.</div></div>
+        <div class="item"><strong>Completion rule</strong><div class="small">If public verification did not happen yet, the work is incomplete even if the local files look correct.</div></div>
+      `;
+
       telegram.innerHTML = `
         <p class="small">${data.notifications.reviewReadyPolicy}</p>
         <p class="small">${data.notifications.taskCompletionPreference || ''}</p>
@@ -443,6 +474,7 @@
 
       links.innerHTML = `
         <div class="item"><strong>Live site</strong><div><a href="${data.links.liveSite}" target="_blank">${data.links.liveSite}</a></div></div>
+        <div class="item"><strong>Start Here</strong><div><a href="${data.links.startHere}" target="_blank">${data.links.startHere}</a></div></div>
         <div class="item"><strong>Dashboard</strong><div><a href="${data.links.dashboard}" target="_blank">${data.links.dashboard}</a></div></div>
         <div class="item"><strong>GitHub repo</strong><div><a href="${data.links.repo}" target="_blank">${data.links.repo}</a></div></div>
         <div class="item"><strong>Workspace folder</strong><div class="small">${data.links.projectFolder}</div></div>
