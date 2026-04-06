@@ -3,186 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thriving Dancer — Capability Test</title>
+  <title>Thriving Dancer</title>
   <style>
     :root {
-      --bg: #0f1020;
+      --bg: #130f1f;
       --panel: rgba(255,255,255,0.08);
-      --text: #f6f3ff;
-      --muted: #cbc2e6;
-      --accent: #ff88c8;
-      --accent2: #9c7cff;
-      --ok: #8ef0b5;
-      --border: rgba(255,255,255,0.16);
-      --shadow: 0 24px 60px rgba(0,0,0,0.35);
+      --panel-strong: rgba(255,255,255,0.12);
+      --text: #f8f5ff;
+      --muted: #d8d0ea;
+      --accent: #ff83bf;
+      --accent2: #8d7bff;
+      --accent3: #7ce3df;
+      --line: rgba(255,255,255,0.14);
+      --shadow: 0 24px 70px rgba(0,0,0,0.35);
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255,136,200,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(156,124,255,0.22), transparent 32%),
-        linear-gradient(160deg, #0d0e1b 0%, #17132c 52%, #20112c 100%);
+        radial-gradient(circle at top left, rgba(255,131,191,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(141,123,255,0.18), transparent 30%),
+        linear-gradient(180deg, #120d1d 0%, #19132b 48%, #100d18 100%);
       min-height: 100vh;
     }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 20px 72px;
+    a { color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 80px; }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 12px 0 24px;
     }
+    .brand { font-weight: 800; letter-spacing: .02em; }
+    .navlinks { display: flex; gap: 16px; color: var(--muted); font-size: .95rem; flex-wrap: wrap; }
     .hero {
-      border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px;
+      align-items: stretch;
+    }
+    .panel {
       background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
-      border-radius: 28px;
-      padding: 32px;
-      overflow: hidden;
-      position: relative;
     }
+    .hero-copy { padding: 34px; }
     .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      display:inline-block; padding:8px 12px; border-radius:999px; background: rgba(255,255,255,0.08);
+      color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px;
     }
     h1 {
       margin: 0 0 14px;
-      font-size: clamp(2.4rem, 6vw, 4.5rem);
-      line-height: 0.98;
-      max-width: 10ch;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: .96;
+      max-width: 11ch;
     }
     .lead {
-      font-size: 1.1rem;
-      line-height: 1.65;
-      color: var(--muted);
-      max-width: 62ch;
-      margin: 0 0 24px;
+      margin: 0 0 22px; color: var(--muted); line-height: 1.7; font-size: 1.08rem; max-width: 60ch;
     }
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
+    .cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 24px 0 18px; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 12px 16px;
-      text-decoration: none;
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
-      font-weight: 600;
+      display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:700;
+      padding: 13px 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.06);
     }
-    .btn.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #1a1220;
-      border: none;
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #180f20; border: none; }
+    .hero-meta { display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 26px; }
+    .stat { padding: 14px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,0.05); }
+    .stat strong { display:block; font-size: 1.15rem; margin-bottom: 6px; }
+    .visual { padding: 22px; display:flex; flex-direction:column; gap: 16px; }
+    .mock {
+      flex:1; min-height: 420px; border-radius: 24px; padding: 18px; border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      display:grid; gap:14px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .card {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-      border-radius: 22px;
-      padding: 18px;
-    }
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.02rem;
-    }
-    .card p, .card li {
-      color: var(--muted);
-      line-height: 1.55;
-    }
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-      color: var(--ok);
-      font-weight: 700;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--ok);
-      box-shadow: 0 0 16px rgba(142,240,181,0.7);
-    }
-    .footer {
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .mini {
-      margin-top: 10px;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      background: rgba(255,255,255,0.08);
-      padding: 2px 6px;
-      border-radius: 8px;
-      color: #fff;
+    .mock-top { display:flex; justify-content:space-between; align-items:center; color: var(--muted); }
+    .mock-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .mini-card { border:1px solid var(--line); background: rgba(255,255,255,0.06); border-radius: 18px; padding: 14px; }
+    .mini-card h4 { margin: 0 0 8px; font-size: 1rem; }
+    .mini-card p, .mini-card li { margin: 0; color: var(--muted); line-height: 1.55; }
+    section.block { margin-top: 24px; padding: 28px; }
+    .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    h2 { margin: 0 0 10px; font-size: 1.9rem; }
+    .section-lead { color: var(--muted); line-height: 1.65; margin-bottom: 20px; max-width: 75ch; }
+    .card { border:1px solid var(--line); background: rgba(255,255,255,0.05); border-radius: 22px; padding: 18px; }
+    .card h3 { margin: 0 0 10px; font-size: 1.05rem; }
+    .card p, .card li { color: var(--muted); line-height: 1.6; }
+    .pill-row { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .pill { padding: 8px 12px; border-radius: 999px; background: rgba(124,227,223,0.12); border:1px solid rgba(124,227,223,0.28); color: #dffaf8; font-size: .92rem; }
+    footer { margin-top: 28px; color: var(--muted); font-size: .95rem; text-align:center; }
+    @media (max-width: 920px) {
+      .hero, .grid3, .grid2, .hero-meta, .mock-grid { grid-template-columns: 1fr; }
+      h1 { max-width: none; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <section class="hero">
-      <div class="eyebrow">Thriving Dancer • capability test</div>
-      <h1>A first live site, published as proof.</h1>
-      <p class="lead">
-        This page exists to prove that Origin can turn a conversation into a real, public-facing web artifact.
-        It’s a tiny first step: a publishable static site for the <strong>Thriving Dancer</strong> project, deployed through GitHub as a personal site test.
-      </p>
-      <div class="cta-row">
-        <a class="btn primary" href="#proof">See the proof points</a>
-        <a class="btn" href="https://github.com/origin4124" target="_blank" rel="noreferrer">GitHub account</a>
+    <div class="nav">
+      <div class="brand">Thriving Dancer</div>
+      <div class="navlinks">
+        <a href="#mission">Mission</a>
+        <a href="#offers">Offers</a>
+        <a href="#platform">Studio Platform</a>
+        <a href="#roadmap">Roadmap</a>
       </div>
-      <div class="status"><span class="dot"></span>Live-site publishing test in progress</div>
-      <div class="mini">If you’re viewing this from a public URL, the GitHub Pages path worked.</div>
+    </div>
+
+    <section class="hero">
+      <div class="panel hero-copy">
+        <div class="eyebrow">Movement • education • choreography • brand building</div>
+        <h1>Build the business before the building.</h1>
+        <p class="lead">
+          <strong>Thriving Dancer</strong> is the start of a grassroots movement brand built around teaching, choreography, digital learning, and long-term studio growth.
+          The goal is to create the systems, audience, offers, and operating rhythm that let the brand grow sustainably before taking on the cost and complexity of a physical studio.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#platform">See the studio platform concept</a>
+          <a class="btn" href="#roadmap">View launch roadmap</a>
+        </div>
+        <div class="hero-meta">
+          <div class="stat"><strong>Brand first</strong><span>Start with clarity, trust, and a public presence that feels real.</span></div>
+          <div class="stat"><strong>Offers next</strong><span>Turn teaching, classes, and creative work into early revenue streams.</span></div>
+          <div class="stat"><strong>Studio later</strong><span>Use systems and income to fund a strong future brick-and-mortar studio.</span></div>
+        </div>
+      </div>
+
+      <aside class="panel visual">
+        <div class="mock">
+          <div class="mock-top">
+            <strong>Thriving Dancer OS</strong>
+            <span>concept snapshot</span>
+          </div>
+          <div class="mock-grid">
+            <div class="mini-card">
+              <h4>Public brand</h4>
+              <p>Homepage, story, podcast, choreography portfolio, classes, and email capture.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Digital teaching</h4>
+              <p>Recorded classes, workshops, memberships, and guided learning experiences.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Studio systems</h4>
+              <p>Scheduling, attendance, teacher coordination, family communication, and admin visibility.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Revenue engine</h4>
+              <p>Classes, choreography, workshops, partnerships, books, and future premium programs.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <section id="proof" class="grid">
-      <article class="card">
-        <h3>What this proves</h3>
-        <p>Origin can create local files, shape a usable front-end, and publish a basic public site instead of only talking about it.</p>
-      </article>
-      <article class="card">
-        <h3>Why it matters</h3>
-        <p>Kirill wants real capability checks, not vague promises. A live URL is harder to fake than a plan in chat.</p>
-      </article>
-      <article class="card">
-        <h3>Where this goes next</h3>
-        <p>Next steps can include a Thriving Dancer planning pack, a real landing page MVP, and a mock studio scheduling interface.</p>
-      </article>
-      <article class="card">
-        <h3>Suggested next demo</h3>
-        <p>Build a clickable scheduling concept with views for students, teachers, and admins to prove broader product capability.</p>
-      </article>
+    <section id="mission" class="panel block">
+      <h2>Mission</h2>
+      <p class="section-lead">
+        Build a movement-centered brand that helps dancers and learners grow through teaching, artistry, structure, and embodied practice—while creating the revenue and systems needed to support a future studio.
+      </p>
+      <div class="grid3">
+        <article class="card">
+          <h3>What we are building now</h3>
+          <p>A strong digital foundation: story, site, audience, teaching offers, planning systems, and consistent visibility.</p>
+        </article>
+        <article class="card">
+          <h3>Why it matters</h3>
+          <p>The studio dream becomes much more realistic when the brand, audience, and cash flow already exist.</p>
+        </article>
+        <article class="card">
+          <h3>What makes it different</h3>
+          <p>This is not just a dance website. It is a teaching business, a creative brand, and eventually a studio operating system.</p>
+        </article>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Dance education</span>
+        <span class="pill">Choreography</span>
+        <span class="pill">Embodied movement</span>
+        <span class="pill">Digital classes</span>
+        <span class="pill">Podcast / content</span>
+        <span class="pill">Studio systems</span>
+      </div>
     </section>
 
-    <p class="footer">
-      Built inside <code>C:\Users\origi\.openclaw\workspace</code> and prepared for GitHub Pages publishing.
-    </p>
+    <section id="offers" class="panel block">
+      <h2>Early offer ladder</h2>
+      <p class="section-lead">A simple first-pass revenue path that can evolve as Trista clarifies the full vision.</p>
+      <div class="grid3">
+        <article class="card"><h3>Free</h3><p>Podcast, newsletter, short movement content, and lead magnets that grow trust and email list depth.</p></article>
+        <article class="card"><h3>Accessible paid</h3><p>Single workshops, digital classes, intro bundles, and short guided series that are easy to launch.</p></article>
+        <article class="card"><h3>Premium</h3><p>Live intensives, choreography services, cohort-style programs, mentorship, and future memberships.</p></article>
+      </div>
+    </section>
+
+    <section id="platform" class="panel block">
+      <h2>Studio scheduling & management concept</h2>
+      <p class="section-lead">
+        One of the longer-term product ideas is a shared studio coordination system that keeps students, teachers, parents, and admins aligned. This can begin as an internal operating tool and later become a broader software product if demand is real.
+      </p>
+      <div class="grid2">
+        <article class="card">
+          <h3>Student / family view</h3>
+          <ul>
+            <li>See upcoming classes and studio calendar</li>
+            <li>Track attendance, notes, and tuition reminders</li>
+            <li>Get announcements, schedule changes, and event details</li>
+            <li>Manage enrollment and simple communication in one place</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Teacher / admin view</h3>
+          <ul>
+            <li>Class rosters, attendance, substitutions, and announcements</li>
+            <li>Shared schedule visibility for teachers and staff</li>
+            <li>Parent/student messaging and event coordination</li>
+            <li>Cleaner ops backbone for a growing studio</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap" class="panel block">
+      <h2>Roadmap</h2>
+      <div class="grid3">
+        <article class="card">
+          <h3>Phase 1 — Discovery</h3>
+          <p>Learn Trista’s full goals, audience, non-negotiables, voice, and business priorities directly from her.</p>
+        </article>
+        <article class="card">
+          <h3>Phase 2 — Brand MVP</h3>
+          <p>Launch the first real public site with story, offers, inquiry paths, and a simple content architecture.</p>
+        </article>
+        <article class="card">
+          <h3>Phase 3 — Systems</h3>
+          <p>Prototype the scheduling/admin product lane and decide whether it stays internal or becomes a product.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Thriving Dancer capability demo — evolving from proof page into a real project landing page.
+    </footer>
   </div>
 </body>
 </html>
