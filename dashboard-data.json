@@ -1,6 +1,6 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-06T10:03:00-04:00",
+  "updatedAt": "2026-04-06T10:10:00-04:00",
   "currentPath": {
     "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
@@ -14,11 +14,12 @@
     {
       "name": "Discovery / founder signal",
       "status": "active",
-      "summary": "Assessing Trista's replies and turning them into clearer launch sequencing and product decisions.",
-      "lastAction": "Trista replied with stronger founder answers, and those answers were distilled into planning docs plus a launch sequencing recommendation.",
-      "assessment": "The broad discovery phase is productive enough now that the remaining questions should narrow toward launch order, first content topics, and offer sequencing rather than broad identity questions.",
-      "nextMove": "Choose the first 3-5 dancer topics and 2-3 parent topics that should become the earliest live guidance content.",
-      "updatedAt": "2026-04-06 09:46 EDT"
+      "summary": "Trista has already replied with the strongest founder answers so far, and that material is currently being turned into launch sequencing and content decisions.",
+      "lastAction": "Communicated with Trista by email; she replied with audience, launch-channel, product, urgency, and long-term direction details, which were distilled into planning docs and a launch sequencing recommendation.",
+      "assessment": "I am not currently blocked on Trista for the present step. I already have enough signal to keep shaping the first release, and any next outreach should be narrower and tactical rather than broad discovery.",
+      "nextMove": "Use the new first-content-topics shortlist to decide whether the first public release should expose one dancer topic and one parent topic immediately or show the lanes first with placeholders.",
+      "dependency": "Not currently waiting on Trista for the current step.",
+      "updatedAt": "2026-04-06 10:10 EDT"
     },
     {
       "name": "Systems / prototype build",
@@ -51,8 +52,8 @@
       "status": "active"
     },
     {
-      "title": "Use launch sequencing to narrow the first content release",
-      "why": "A sequencing recommendation now exists; the next discovery move is narrowing which first dancer/parent content pieces should go live earliest.",
+      "title": "Turn the first-content shortlist into real CTA destinations",
+      "why": "The initial dancer/parent topic shortlist now exists, so the next discovery/build move is deciding whether to expose one real topic per lane or placeholder lane pages first.",
       "status": "active"
     },
     {
@@ -376,6 +377,69 @@
       "status": "done",
       "title": "Scheduled Trista daily morning report",
       "detail": "Added a daily 10:15 AM America/New_York morning report workflow for Trista so she gets project status and the dashboard link automatically."
+    },
+    {
+      "when": "2026-04-06 10:10 EDT",
+      "kind": "discovery",
+      "status": "done",
+      "title": "Created first content topics shortlist",
+      "detail": "Turned the vague first-content question into a concrete v1 shortlist of five dancer topics and three parent topics for the earliest written guidance lanes."
+    }
+  ],
+  "docs": [
+    {
+      "title": "Discovery brief",
+      "path": "projects/thriving-dancer/discovery-brief.md",
+      "kind": "discovery",
+      "note": "Distilled founder/business signal from Trista into a concise working brief."
+    },
+    {
+      "title": "Planning Pack v1",
+      "path": "projects/thriving-dancer/planning-pack-v1.md",
+      "kind": "planning",
+      "note": "Positioning, audience, offer ladder, launch channels, and staged roadmap."
+    },
+    {
+      "title": "Website architecture draft",
+      "path": "projects/thriving-dancer/website-architecture-draft.md",
+      "kind": "planning",
+      "note": "Homepage goals, page structure, content buckets, and CTA strategy."
+    },
+    {
+      "title": "Homepage copy draft",
+      "path": "projects/thriving-dancer/homepage-copy-draft.md",
+      "kind": "planning",
+      "note": "First-pass public-facing homepage messaging."
+    },
+    {
+      "title": "About page outline",
+      "path": "projects/thriving-dancer/about-page-outline.md",
+      "kind": "planning",
+      "note": "Founder story, credibility, philosophy, and CTA structure."
+    },
+    {
+      "title": "First visit flow v1",
+      "path": "projects/thriving-dancer/first-visit-flow-v1.md",
+      "kind": "flow",
+      "note": "Homepage -> Start Here -> dancer/parent/philosophy routing."
+    },
+    {
+      "title": "Launch sequencing recommendation",
+      "path": "projects/thriving-dancer/launch-sequencing-recommendation.md",
+      "kind": "strategy",
+      "note": "Recommendation for homepage -> Start Here -> About -> first blog lanes, with podcast later."
+    },
+    {
+      "title": "First content topics v1",
+      "path": "projects/thriving-dancer/first-content-topics-v1.md",
+      "kind": "content",
+      "note": "Initial shortlist of dancer and parent topics to make the first written guidance lanes concrete."
+    },
+    {
+      "title": "Start Here prototype",
+      "path": "projects/thriving-dancer/start-here-prototype.html",
+      "kind": "prototype",
+      "note": "Concrete local page prototype for the next public-facing implementation step."
     }
   ],
   "links": {
