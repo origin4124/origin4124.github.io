@@ -1,34 +1,34 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-05T23:30:00-04:00",
+  "updatedAt": "2026-04-06T07:44:00-04:00",
   "currentPath": {
-    "summary": "Discovery-first product and business build: convert Trista's clearer founder direction into outward-facing site, messaging, and launch architecture while keeping the dashboard and reporting surfaces current.",
+    "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
-      "Turn Trista's direct answers into durable planning docs.",
-      "Translate planning into public-facing messaging and site structure.",
-      "Keep the live site and project dashboard current enough to act as a real command surface.",
-      "Use heartbeat/autonomous review to keep choosing the next bounded step."
+      "Turn founder answers into durable planning docs.",
+      "Translate planning into public-facing messaging and page structure.",
+      "Make the dashboard a clearer command surface instead of a long scrolling log.",
+      "Keep heartbeat/autonomous activity visible enough that Kirill can tell what is running and why."
     ]
   },
   "nextSteps": [
     {
-      "title": "Draft outward-facing website/content architecture",
-      "why": "Planning Pack v1 now exists, so the next useful move is homepage messaging, page structure, and launch-flow definition.",
+      "title": "Turn Start Here into a first simple prototype",
+      "why": "The launch checklist now exists, so the next useful move is converting the routing plan into a concrete page or section draft.",
       "status": "active"
     },
     {
-      "title": "Finish dashboard refinement",
-      "why": "The light passphrase gate and richer project-log treatment need to finish propagating publicly.",
-      "status": "in_progress"
-    },
-    {
-      "title": "Continue direct email discovery only for narrower follow-up questions",
-      "why": "Broad discovery has improved a lot; remaining questions are now tactical and sequencing-oriented.",
-      "status": "queued"
+      "title": "Add heartbeat/activity visibility to the live dashboard UI",
+      "why": "Kirill wants to see what runs, how often, and what the assistant is doing without digging through chat.",
+      "status": "active"
     },
     {
       "title": "Recommend the first concrete launch asset",
-      "why": "The next product decision is likely workbook vs. unit study vs. podcast/blog-first sequencing.",
+      "why": "The next product decision is still workbook vs. unit study vs. podcast/blog-first sequencing.",
+      "status": "queued"
+    },
+    {
+      "title": "Continue direct email discovery only for tactical follow-up questions",
+      "why": "Broad discovery improved a lot; remaining questions are now narrower and sequencing-oriented.",
       "status": "queued"
     }
   ],
@@ -41,15 +41,15 @@
     "Established direct email communication with Trista.",
     "Captured a strong first signal set from Trista: credentials, performance history, teaching background, founder role, age 3–14 mission focus, growth mindset, developmentally appropriate training, and whole-person philosophy.",
     "Captured clearer founder answers: first audience = pre-professional dancers ages 10–16, first launch = podcast + blog, early products = workbook + ballet unit study, and the studio software lane is both internal and potentially product-facing later.",
-    "Set up a 2-hour autonomous Thriving Dancer assessment heartbeat to decide and take the next bounded project step.",
+    "Set up a 1-hour autonomous Thriving Dancer assessment heartbeat to decide and take the next bounded project step.",
     "Built and published a live Thriving Dancer project dashboard at /dashboard.html.",
-    "Created a working discovery brief and explicit next-step file inside the project folder.",
-    "Created Planning Pack v1 with positioning, audience, offer ladder, launch channels, website structure, and strategic sequence."
+    "Updated the homepage and dashboard gates to minimal text only.",
+    "Created a working discovery brief, Planning Pack v1, website/content architecture draft, homepage copy draft, about-page outline, hero/CTA options, Start Here hub structure, first-visit flow draft, and first public launch checklist inside the project folder."
   ],
   "blockers": [
     {
-      "label": "Dashboard refinement in progress",
-      "detail": "Light passphrase gating and the richer project-log view were added locally and pushed, but public propagation may still lag briefly.",
+      "label": "Dashboard/homepage gate propagation",
+      "detail": "The homepage and dashboard both have the minimal passcode gate locally now, but public GitHub Pages propagation may lag briefly after updates.",
       "severity": "low",
       "telegramAlertSent": false
     },
@@ -71,16 +71,82 @@
       {
         "when": "2026-04-05 21:31 EDT",
         "event": "Thriving Dancer site became review-ready and complete.",
-        "sent": true
+        "sent": true,
+        "link": "https://origin4124.github.io/"
       },
       {
         "when": "2026-04-05 22:43 EDT",
         "event": "Dashboard passphrase/project-log update finished locally and Outlook was cleaned down to one main tab.",
-        "sent": true
+        "sent": true,
+        "link": "https://origin4124.github.io/dashboard.html"
+      },
+      {
+        "when": "2026-04-05 23:44 EDT",
+        "event": "Homepage proof-of-concept was updated to use the same light passphrase gate as the dashboard.",
+        "sent": true,
+        "link": "https://origin4124.github.io/"
       }
     ],
     "reviewReadyPolicy": "Ping Kirill on Telegram when review is ready and again when the full loop is complete for important operations.",
-    "taskCompletionPreference": "Ping Kirill on Telegram every time a task is finished."
+    "taskCompletionPreference": "Ping Kirill on Telegram every time a task is finished.",
+    "githubVisibilityRule": "When GitHub-hosted pages change in a way that gives Kirill something new to see, send a concise message with the relevant link after the change is live or reasonably visible."
+  },
+  "automation": {
+    "summary": "Current autonomous activity and heartbeat behavior that keeps the project and ops surfaces moving.",
+    "items": [
+      {
+        "name": "Thriving Dancer project heartbeat",
+        "interval": "Every 1 hour",
+        "purpose": "Assess project state, choose the most useful bounded next step, and make concrete progress.",
+        "currentBehavior": [
+          "Reassess project state instead of following a hard-coded task list.",
+          "Prefer one bounded useful step per pass.",
+          "Keep dashboard data current when project path changes.",
+          "If heartbeat-critical work interrupts a task, check afterward and retry the interrupted task if still safe and useful."
+        ]
+      },
+      {
+        "name": "Operation recovery sweep",
+        "interval": "Every 30 minutes",
+        "purpose": "Reconcile unfinished safe operations until they reach a terminal state.",
+        "currentBehavior": [
+          "Check operations-log.json for pending/running/uncertain work.",
+          "Retry safe work only when verification is inconclusive and retry is safe.",
+          "Escalate to needs_review instead of looping forever when risk or repeated failure appears."
+        ]
+      },
+      {
+        "name": "Telegram fallback bridge",
+        "interval": "Checked on heartbeat when at least 1 hour has passed since last Telegram check",
+        "purpose": "Catch new human DMs while native messaging remains broken.",
+        "currentBehavior": [
+          "Compare Telegram updates against last handled update id.",
+          "Reply briefly via direct Telegram Bot API when a new DM appears.",
+          "Close temporary Telegram tabs after use."
+        ]
+      },
+      {
+        "name": "Outlook email watcher",
+        "interval": "Checked on heartbeat when at least 1 hour has passed since last email check, except quiet hours",
+        "purpose": "Surface relevant unread work/business email without babysitting the inbox.",
+        "currentBehavior": [
+          "Unread-only review.",
+          "Quiet hours: skip email checks from 11:00 PM to 10:00 AM local time.",
+          "Archive-first, moderate handling.",
+          "Escalate meaningful ambiguities when human judgment is needed."
+        ]
+      },
+      {
+        "name": "Browser tab maintenance",
+        "interval": "Applied during heartbeat and overnight work",
+        "purpose": "Keep one necessary tab per recurring site unless multiple tabs are actively required.",
+        "currentBehavior": [
+          "Close extra Outlook, GitHub, Telegram API, and other recurring tabs.",
+          "Keep a single useful tab open when possible.",
+          "Prefer a clean working browser state over tab buildup."
+        ]
+      }
+    ]
   },
   "calendar": [
     {
@@ -97,12 +163,19 @@
         "Reviewed Trista's LinkedIn and recognized a broader moat than just dance classes.",
         "Built and published the first public Thriving Dancer landing page on GitHub Pages.",
         "Started direct email communication with Trista and sent follow-up discovery questions.",
-        "Added autonomous 2-hour project heartbeat for Thriving Dancer.",
+        "Added autonomous project heartbeat for Thriving Dancer.",
         "Built and published the project dashboard.",
-        "Created a working discovery brief and next-step file from Trista's current signal.",
+        "Created a working discovery brief from Trista's current signal.",
         "Captured stronger founder answers on audience, launch channel, early products, urgency, and long-term software direction.",
-        "Started dashboard hardening with a light passphrase gate and richer project-log view.",
-        "Created Planning Pack v1 from the founder signal already gathered."
+        "Added light passphrase gates to both the dashboard and homepage proof of concept.",
+        "Created Planning Pack v1, the website/content architecture draft, the homepage copy draft, and the Start Here hub structure."
+      ]
+    },
+    {
+      "date": "2026-04-06",
+      "items": [
+        "Created the about-page outline, tightened hero/CTA options with a recommendation to use a combined Start Here destination first, defined the Start Here hub structure, created a first-visit flow draft, and made the public gates minimal-text only.",
+        "Improved heartbeat rules so interrupted tasks can be resumed after heartbeat-critical work finishes and so GitHub-visible updates trigger a message with a link."
       ]
     }
   ],
@@ -147,7 +220,7 @@
       "kind": "ops",
       "status": "done",
       "title": "Dashboard and heartbeat became operating surfaces",
-      "detail": "The dashboard went live and the 2-hour autonomous project heartbeat started driving next-step assessment."
+      "detail": "The dashboard went live and the autonomous project heartbeat started driving next-step assessment."
     },
     {
       "when": "2026-04-05 22:40 EDT",
@@ -162,6 +235,62 @@
       "status": "done",
       "title": "Created Planning Pack v1",
       "detail": "Turned the founder signal into positioning, audience, offer ladder, first launch channels, website structure, and strategic sequence."
+    },
+    {
+      "when": "2026-04-06 00:30 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created website/content architecture draft",
+      "detail": "Translated Planning Pack v1 into homepage goals, messaging hierarchy, page structure, content buckets, and CTA strategy."
+    },
+    {
+      "when": "2026-04-06 01:31 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created homepage copy draft",
+      "detail": "Turned the site architecture into a first pass of page copy for the homepage hero and main sections."
+    },
+    {
+      "when": "2026-04-06 02:31 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created about-page outline",
+      "detail": "Turned the founder story, credibility, philosophy, audience, and CTA into a page-ready narrative outline."
+    },
+    {
+      "when": "2026-04-06 02:35 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created hero and CTA options",
+      "detail": "Tightened the homepage top-of-page language, recommended a combined Start Here path, and set up the next step around a simple content hub."
+    },
+    {
+      "when": "2026-04-06 03:01 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created Start Here hub structure",
+      "detail": "Defined the first-click hub page so the homepage CTA can route dancers and parents into a simple guided content path."
+    },
+    {
+      "when": "2026-04-06 06:35 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created first-visit flow v1",
+      "detail": "Connected the homepage draft, About outline, hero options, and a 3-path Start Here block into a clearer first public visitor journey."
+    },
+    {
+      "when": "2026-04-06 07:01 EDT",
+      "kind": "planning",
+      "status": "done",
+      "title": "Created first public launch checklist",
+      "detail": "Defined the lean first-release page set, CTA map, navigation, acceptance checklist, and recommendation to use the blog as the first live content destination."
+    },
+    {
+      "when": "2026-04-06 07:44 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Added interruption-retry and GitHub visibility rules",
+      "detail": "Updated heartbeat guidance so interrupted bounded tasks can be retried after heartbeat-critical work and GitHub-visible updates should trigger a concise message with a link."
     }
   ],
   "links": {

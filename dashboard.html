@@ -8,6 +8,7 @@
     :root {
       --bg: #0f1020;
       --panel: rgba(255,255,255,0.08);
+      --panel2: rgba(255,255,255,0.05);
       --text: #f7f5ff;
       --muted: #cec6e6;
       --accent: #ff82c0;
@@ -31,15 +32,16 @@
     }
     .hidden { display: none !important; }
     .wrap { max-width: 1240px; margin: 0 auto; padding: 26px 18px 80px; }
-    .hero, .card, .gate-card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+    .hero, .card, .gate-card, .tab-shell { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
     .hero, .gate-card { padding: 28px; margin-bottom: 18px; }
+    .card, .tab-shell { padding: 22px; }
     .eyebrow { display:inline-block; padding:8px 12px; border-radius:999px; background: rgba(255,255,255,0.08); color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
     h1 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.4rem); }
     h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
     .lead, p, li { color: var(--muted); line-height: 1.65; }
     .gate-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
     .gate-card { max-width: 620px; width: 100%; }
-    .gate-note { font-size: .95rem; color: var(--muted); }
     .gate-form { display: grid; gap: 12px; margin-top: 18px; }
     input[type="password"] {
       width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line);
@@ -54,47 +56,54 @@
     .stats { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 18px; }
     .stat { background: rgba(255,255,255,0.05); border:1px solid var(--line); border-radius: 18px; padding: 14px; }
     .stat strong { display:block; font-size: 1.1rem; margin-bottom: 6px; }
-    .grid { display:grid; grid-template-columns: 1.15fr .85fr; gap: 18px; }
+    .tab-bar { display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 18px; }
+    .tab-btn {
+      padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.06);
+      color: white; cursor: pointer; font-weight: 700;
+    }
+    .tab-btn.active { background: linear-gradient(135deg, rgba(255,130,192,0.9), rgba(143,125,255,0.9)); color: #190f21; border: none; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid-3 { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
     .stack { display:grid; gap: 18px; }
-    .card { padding: 22px; }
     ul { padding-left: 20px; margin: 10px 0 0; }
     .item { padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.08); }
     .item:first-child { border-top: 0; padding-top: 0; }
     .tag { display:inline-block; padding: 6px 10px; border-radius: 999px; font-size: .78rem; font-weight: 700; margin-left: 8px; }
-    .active, .done { background: rgba(148,242,187,0.16); color: #d8ffea; border:1px solid rgba(148,242,187,0.3); }
+    .active-status, .done { background: rgba(148,242,187,0.16); color: #d8ffea; border:1px solid rgba(148,242,187,0.3); }
     .in_progress { background: rgba(255,211,125,0.16); color: #fff2cd; border:1px solid rgba(255,211,125,0.28); }
     .queued { background: rgba(143,125,255,0.18); color: #efe9ff; border:1px solid rgba(143,125,255,0.28); }
     .sev-low,.sev-medium,.sev-high { display:inline-block; padding: 5px 9px; border-radius: 999px; font-size: .78rem; margin-top: 8px; }
     .sev-low { background: rgba(148,242,187,0.14); color: #dcffea; }
     .sev-medium { background: rgba(255,211,125,0.16); color: #fff2cd; }
     .sev-high { background: rgba(255,159,159,0.16); color: #ffd9d9; }
-    .calendar-day { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); }
-    .calendar-day:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
-    .date { font-weight: 800; margin-bottom: 6px; }
     .small { font-size: .95rem; color: var(--muted); }
     .links a { color: #fff; }
     .muted { color: var(--muted); }
     .log-list { display: grid; gap: 12px; }
-    .log-entry {
+    .log-entry, .mini-card {
       border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; background: rgba(255,255,255,0.04);
     }
     .log-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
     .log-kind { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: #f4d6ff; }
     .log-when { color: var(--muted); font-size: .9rem; }
-    .callout { border-left: 3px solid rgba(255,130,192,0.6); padding-left: 12px; }
-    @media (max-width: 980px) { .grid, .stats { grid-template-columns: 1fr; } }
+    .calendar-day { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .calendar-day:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+    .date { font-weight: 800; margin-bottom: 6px; }
+    .interval { display:inline-block; margin-top:8px; padding: 6px 10px; border-radius: 999px; background: rgba(143,125,255,0.18); color: #efe9ff; font-size: .82rem; }
+    @media (max-width: 980px) {
+      .stats, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div id="gate" class="gate-wrap">
     <section class="gate-card">
-      <div class="eyebrow">Thriving Dancer • light privacy gate</div>
-      <h1>Project dashboard</h1>
-      <p class="lead">This is a light passphrase screen, not real security. It keeps the dashboard from being casually visible, but the site is still published on static GitHub Pages.</p>
-      <div class="callout gate-note">Use the current lightweight passphrase to unlock the dashboard.</div>
+      <h1>Enter passcode</h1>
       <form id="gateForm" class="gate-form">
-        <input id="passphrase" type="password" placeholder="Enter passphrase" autocomplete="current-password" />
-        <button class="btn primary" type="submit">Unlock dashboard</button>
+        <input id="passphrase" type="password" placeholder="Passcode" autocomplete="current-password" />
+        <button class="btn primary" type="submit">Continue</button>
         <div id="gateError" class="error"></div>
       </form>
     </section>
@@ -114,57 +123,94 @@
         </div>
       </section>
 
-      <div class="grid">
-        <div class="stack">
-          <section class="card">
-            <h2>Current path</h2>
-            <p id="pathSummary"></p>
-            <ul id="pathFocus"></ul>
-          </section>
-
-          <section class="card">
-            <h2>Next steps</h2>
-            <div id="nextSteps"></div>
-          </section>
-
-          <section class="card">
-            <h2>Completed / accomplished</h2>
-            <ul id="completed"></ul>
-          </section>
-
-          <section class="card">
-            <h2>Project log</h2>
-            <p class="small">A more journal-like running history of meaningful work, not just a date bucket.</p>
-            <div id="projectLog" class="log-list"></div>
-          </section>
-
-          <section class="card">
-            <h2>Calendar / activity by day</h2>
-            <div id="calendar"></div>
-          </section>
+      <div class="tab-shell">
+        <div class="tab-bar" id="tabBar">
+          <button class="tab-btn active" data-tab="overview">Overview</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="automation">Automation</button>
+          <button class="tab-btn" data-tab="comms">Comms</button>
+          <button class="tab-btn" data-tab="links">Links & Ops</button>
         </div>
 
-        <div class="stack">
-          <section class="card">
-            <h2>Blockers</h2>
-            <div id="blockers"></div>
-          </section>
+        <section id="tab-overview" class="tab-panel active">
+          <div class="grid-2">
+            <div class="stack">
+              <section class="card">
+                <h2>Current path</h2>
+                <p id="pathSummary"></p>
+                <ul id="pathFocus"></ul>
+              </section>
+              <section class="card">
+                <h2>Next steps</h2>
+                <div id="nextSteps"></div>
+              </section>
+            </div>
+            <div class="stack">
+              <section class="card">
+                <h2>Blockers</h2>
+                <div id="blockers"></div>
+              </section>
+              <section class="card">
+                <h2>Completed / accomplished</h2>
+                <ul id="completed"></ul>
+              </section>
+            </div>
+          </div>
+        </section>
 
-          <section class="card">
-            <h2>Telegram notification state</h2>
-            <div id="telegram"></div>
-          </section>
+        <section id="tab-activity" class="tab-panel">
+          <div class="grid-2">
+            <section class="card">
+              <h2>Project log</h2>
+              <p class="small">Latest entries first.</p>
+              <div id="projectLog" class="log-list"></div>
+            </section>
+            <section class="card">
+              <h2>Calendar / activity by day</h2>
+              <div id="calendar"></div>
+            </section>
+          </div>
+        </section>
 
-          <section class="card links">
-            <h2>Project links</h2>
-            <div id="links"></div>
-          </section>
+        <section id="tab-automation" class="tab-panel">
+          <div class="grid-2">
+            <section class="card">
+              <h2>Heartbeat / automation visibility</h2>
+              <p class="small" id="automationSummary"></p>
+              <div id="automationItems" class="stack"></div>
+            </section>
+            <section class="card">
+              <h2>Rules now in effect</h2>
+              <div id="automationRules"></div>
+            </section>
+          </div>
+        </section>
 
-          <section class="card">
-            <h2>Security note</h2>
-            <p class="small">This passphrase screen is just a convenience/privacy layer. It is not true access control. For real protection later, use a proper auth layer in front of the site.</p>
-          </section>
-        </div>
+        <section id="tab-comms" class="tab-panel">
+          <div class="grid-2">
+            <section class="card">
+              <h2>Telegram notification state</h2>
+              <div id="telegram"></div>
+            </section>
+            <section class="card">
+              <h2>Messaging / visibility rules</h2>
+              <div id="messageRules"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="tab-links" class="tab-panel">
+          <div class="grid-2">
+            <section class="card links">
+              <h2>Project links</h2>
+              <div id="links"></div>
+            </section>
+            <section class="card">
+              <h2>Ops notes</h2>
+              <div id="opsNotes"></div>
+            </section>
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -206,12 +252,29 @@
     }
 
     function renderTag(status) {
-      return `<span class="tag ${status}">${status.replace('_',' ')}</span>`;
+      const cls = status === 'active' ? 'active-status' : status;
+      return `<span class="tag ${cls}">${status.replace('_',' ')}</span>`;
     }
+
+    function activateTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === name);
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === `tab-${name}`);
+      });
+    }
+
+    document.getElementById('tabBar').addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      activateTab(btn.dataset.tab);
+    });
 
     async function load() {
       const res = await fetch('./dashboard-data.json?v=' + Date.now());
       const data = await res.json();
+
       title.textContent = data.project + ' dashboard';
       summary.textContent = data.currentPath.summary;
       updated.textContent = new Date(data.updatedAt).toLocaleString();
@@ -243,24 +306,33 @@
       telegram.innerHTML = `
         <p class="small">${data.notifications.reviewReadyPolicy}</p>
         <p class="small">${data.notifications.taskCompletionPreference || ''}</p>
-        ${data.notifications.telegram.map(t => `<div class="item"><strong>${t.when}</strong><div class="small">${t.event}</div><div class="small muted">Sent: ${t.sent ? 'yes' : 'no'}</div></div>`).join('')}
+        ${(data.notifications.telegram || []).map(t => `<div class="item"><strong>${t.when}</strong><div class="small">${t.event}</div><div class="small muted">Sent: ${t.sent ? 'yes' : 'no'}${t.link ? ` • <a href="${t.link}" target="_blank">link</a>` : ''}</div></div>`).join('')}
       `;
 
-      projectLog.innerHTML = (data.projectLog || []).map(entry => `
-        <div class="log-entry">
-          <div class="log-top">
-            <div>
-              <div class="log-kind">${entry.kind}</div>
-              <strong>${entry.title}</strong>
+      messageRules.innerHTML = `
+        <div class="item"><strong>GitHub visibility rule</strong><div class="small">${data.notifications.githubVisibilityRule || '—'}</div></div>
+        <div class="item"><strong>Review-ready policy</strong><div class="small">${data.notifications.reviewReadyPolicy || '—'}</div></div>
+        <div class="item"><strong>Task completion preference</strong><div class="small">${data.notifications.taskCompletionPreference || '—'}</div></div>
+      `;
+
+      projectLog.innerHTML = (data.projectLog || [])
+        .slice()
+        .sort((a, b) => new Date(b.when).getTime() - new Date(a.when).getTime())
+        .map(entry => `
+          <div class="log-entry">
+            <div class="log-top">
+              <div>
+                <div class="log-kind">${entry.kind}</div>
+                <strong>${entry.title}</strong>
+              </div>
+              <div>
+                ${renderTag(entry.status)}
+                <div class="log-when">${entry.when}</div>
+              </div>
             </div>
-            <div>
-              ${renderTag(entry.status)}
-              <div class="log-when">${entry.when}</div>
-            </div>
+            <div class="small">${entry.detail}</div>
           </div>
-          <div class="small">${entry.detail}</div>
-        </div>
-      `).join('');
+        `).join('');
 
       calendar.innerHTML = data.calendar.map(day => `
         <div class="calendar-day">
@@ -269,11 +341,34 @@
         </div>
       `).join('');
 
+      automationSummary.textContent = data.automation?.summary || '';
+      automationItems.innerHTML = (data.automation?.items || []).map(item => `
+        <div class="mini-card">
+          <h3>${item.name}</h3>
+          <div class="interval">${item.interval}</div>
+          <p class="small">${item.purpose}</p>
+          <ul>${(item.currentBehavior || []).map(x => `<li>${x}</li>`).join('')}</ul>
+        </div>
+      `).join('');
+
+      automationRules.innerHTML = `
+        <div class="item"><strong>Current project heartbeat focus</strong><div class="small">${data.currentPath.summary}</div></div>
+        <div class="item"><strong>Retry-after-interruption</strong><div class="small">If heartbeat-critical work interrupts a bounded task, check afterward and retry or resume it when it is still safe and useful.</div></div>
+        <div class="item"><strong>Browser tab maintenance</strong><div class="small">Keep one necessary tab per recurring site unless multiple tabs are actively required.</div></div>
+        <div class="item"><strong>Quiet-hours email rule</strong><div class="small">Skip email checks from 11:00 PM to 10:00 AM local time.</div></div>
+      `;
+
       links.innerHTML = `
         <div class="item"><strong>Live site</strong><div><a href="${data.links.liveSite}" target="_blank">${data.links.liveSite}</a></div></div>
         <div class="item"><strong>Dashboard</strong><div><a href="${data.links.dashboard}" target="_blank">${data.links.dashboard}</a></div></div>
         <div class="item"><strong>GitHub repo</strong><div><a href="${data.links.repo}" target="_blank">${data.links.repo}</a></div></div>
         <div class="item"><strong>Workspace folder</strong><div class="small">${data.links.projectFolder}</div></div>
+      `;
+
+      opsNotes.innerHTML = `
+        <div class="item"><strong>Public gate status</strong><div class="small">Homepage and dashboard gates are both minimal-text passcode screens locally.</div></div>
+        <div class="item"><strong>Dashboard organization</strong><div class="small">The dashboard is now grouped into tabs so it is easier to navigate than a single long page.</div></div>
+        <div class="item"><strong>Project log order</strong><div class="small">Past activity entries render latest first.</div></div>
       `;
     }
 
