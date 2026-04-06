@@ -8,7 +8,6 @@
     :root {
       --bg: #0f1020;
       --panel: rgba(255,255,255,0.08);
-      --panel2: rgba(255,255,255,0.12);
       --text: #f7f5ff;
       --muted: #cec6e6;
       --accent: #ff82c0;
@@ -30,25 +29,39 @@
         linear-gradient(180deg, #0f1120 0%, #17152d 50%, #0e0f18 100%);
       min-height: 100vh;
     }
+    .hidden { display: none !important; }
     .wrap { max-width: 1240px; margin: 0 auto; padding: 26px 18px 80px; }
-    .hero, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
-    .hero { padding: 28px; margin-bottom: 18px; }
+    .hero, .card, .gate-card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+    .hero, .gate-card { padding: 28px; margin-bottom: 18px; }
     .eyebrow { display:inline-block; padding:8px 12px; border-radius:999px; background: rgba(255,255,255,0.08); color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
     h1 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.4rem); }
-    .lead { color: var(--muted); line-height: 1.7; max-width: 80ch; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .lead, p, li { color: var(--muted); line-height: 1.65; }
+    .gate-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .gate-card { max-width: 620px; width: 100%; }
+    .gate-note { font-size: .95rem; color: var(--muted); }
+    .gate-form { display: grid; gap: 12px; margin-top: 18px; }
+    input[type="password"] {
+      width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06); color: white; font-size: 1rem;
+    }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:700;
+      padding: 13px 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.06); color: white; cursor: pointer;
+    }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #180f20; border: none; }
+    .error { color: #ffd1d1; min-height: 1.2rem; }
     .stats { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 18px; }
     .stat { background: rgba(255,255,255,0.05); border:1px solid var(--line); border-radius: 18px; padding: 14px; }
     .stat strong { display:block; font-size: 1.1rem; margin-bottom: 6px; }
-    .grid { display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+    .grid { display:grid; grid-template-columns: 1.15fr .85fr; gap: 18px; }
     .stack { display:grid; gap: 18px; }
     .card { padding: 22px; }
-    h2 { margin: 0 0 12px; font-size: 1.35rem; }
-    p, li { color: var(--muted); line-height: 1.65; }
     ul { padding-left: 20px; margin: 10px 0 0; }
     .item { padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.08); }
     .item:first-child { border-top: 0; padding-top: 0; }
     .tag { display:inline-block; padding: 6px 10px; border-radius: 999px; font-size: .78rem; font-weight: 700; margin-left: 8px; }
-    .active { background: rgba(148,242,187,0.16); color: #d8ffea; border:1px solid rgba(148,242,187,0.3); }
+    .active, .done { background: rgba(148,242,187,0.16); color: #d8ffea; border:1px solid rgba(148,242,187,0.3); }
     .in_progress { background: rgba(255,211,125,0.16); color: #fff2cd; border:1px solid rgba(255,211,125,0.28); }
     .queued { background: rgba(143,125,255,0.18); color: #efe9ff; border:1px solid rgba(143,125,255,0.28); }
     .sev-low,.sev-medium,.sev-high { display:inline-block; padding: 5px 9px; border-radius: 999px; font-size: .78rem; margin-top: 8px; }
@@ -61,72 +74,141 @@
     .small { font-size: .95rem; color: var(--muted); }
     .links a { color: #fff; }
     .muted { color: var(--muted); }
+    .log-list { display: grid; gap: 12px; }
+    .log-entry {
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; background: rgba(255,255,255,0.04);
+    }
+    .log-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+    .log-kind { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: #f4d6ff; }
+    .log-when { color: var(--muted); font-size: .9rem; }
+    .callout { border-left: 3px solid rgba(255,130,192,0.6); padding-left: 12px; }
     @media (max-width: 980px) { .grid, .stats { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <div class="eyebrow">Thriving Dancer • project dashboard</div>
-      <h1 id="title">Project status</h1>
-      <p class="lead" id="summary">Loading dashboard...</p>
-      <div class="stats">
-        <div class="stat"><strong id="updated">—</strong><span>Last updated</span></div>
-        <div class="stat"><strong id="completedCount">—</strong><span>Completed items tracked</span></div>
-        <div class="stat"><strong id="blockerCount">—</strong><span>Current blockers</span></div>
-        <div class="stat"><strong id="telegramCount">—</strong><span>Telegram notifications logged</span></div>
-      </div>
+  <div id="gate" class="gate-wrap">
+    <section class="gate-card">
+      <div class="eyebrow">Thriving Dancer • light privacy gate</div>
+      <h1>Project dashboard</h1>
+      <p class="lead">This is a light passphrase screen, not real security. It keeps the dashboard from being casually visible, but the site is still published on static GitHub Pages.</p>
+      <div class="callout gate-note">Current lightweight passphrase: <strong>thriving-2026</strong></div>
+      <form id="gateForm" class="gate-form">
+        <input id="passphrase" type="password" placeholder="Enter passphrase" autocomplete="current-password" />
+        <button class="btn primary" type="submit">Unlock dashboard</button>
+        <div id="gateError" class="error"></div>
+      </form>
     </section>
+  </div>
 
-    <div class="grid">
-      <div class="stack">
-        <section class="card">
-          <h2>Current path</h2>
-          <p id="pathSummary"></p>
-          <ul id="pathFocus"></ul>
-        </section>
+  <div id="app" class="hidden">
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Thriving Dancer • project dashboard</div>
+        <h1 id="title">Project status</h1>
+        <p class="lead" id="summary">Loading dashboard...</p>
+        <div class="stats">
+          <div class="stat"><strong id="updated">—</strong><span>Last updated</span></div>
+          <div class="stat"><strong id="completedCount">—</strong><span>Completed items tracked</span></div>
+          <div class="stat"><strong id="blockerCount">—</strong><span>Current blockers</span></div>
+          <div class="stat"><strong id="telegramCount">—</strong><span>Telegram notifications logged</span></div>
+        </div>
+      </section>
 
-        <section class="card">
-          <h2>Next steps</h2>
-          <div id="nextSteps"></div>
-        </section>
+      <div class="grid">
+        <div class="stack">
+          <section class="card">
+            <h2>Current path</h2>
+            <p id="pathSummary"></p>
+            <ul id="pathFocus"></ul>
+          </section>
 
-        <section class="card">
-          <h2>Completed / accomplished</h2>
-          <ul id="completed"></ul>
-        </section>
+          <section class="card">
+            <h2>Next steps</h2>
+            <div id="nextSteps"></div>
+          </section>
 
-        <section class="card">
-          <h2>Calendar / activity by day</h2>
-          <div id="calendar"></div>
-        </section>
-      </div>
+          <section class="card">
+            <h2>Completed / accomplished</h2>
+            <ul id="completed"></ul>
+          </section>
 
-      <div class="stack">
-        <section class="card">
-          <h2>Blockers</h2>
-          <div id="blockers"></div>
-        </section>
+          <section class="card">
+            <h2>Project log</h2>
+            <p class="small">A more journal-like running history of meaningful work, not just a date bucket.</p>
+            <div id="projectLog" class="log-list"></div>
+          </section>
 
-        <section class="card">
-          <h2>Telegram notification state</h2>
-          <div id="telegram"></div>
-        </section>
+          <section class="card">
+            <h2>Calendar / activity by day</h2>
+            <div id="calendar"></div>
+          </section>
+        </div>
 
-        <section class="card links">
-          <h2>Project links</h2>
-          <div id="links"></div>
-        </section>
+        <div class="stack">
+          <section class="card">
+            <h2>Blockers</h2>
+            <div id="blockers"></div>
+          </section>
 
-        <section class="card">
-          <h2>Security note</h2>
-          <p class="small">If this page is published through normal public GitHub Pages, anything here should be treated as public unless we add a real access-control layer. A client-side password screen can hide the UI a bit, but it is not real protection.</p>
-        </section>
+          <section class="card">
+            <h2>Telegram notification state</h2>
+            <div id="telegram"></div>
+          </section>
+
+          <section class="card links">
+            <h2>Project links</h2>
+            <div id="links"></div>
+          </section>
+
+          <section class="card">
+            <h2>Security note</h2>
+            <p class="small">This passphrase screen is just a convenience/privacy layer. It is not true access control. For real protection later, use a proper auth layer in front of the site.</p>
+          </section>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    const PASS_HASH = '7f52d2197968f706e194269d1fd0b1f1bd3999b50b46e8b0485d5625e9f6f066';
+    const STORAGE_KEY = 'thriving-dancer-dashboard-unlocked';
+
+    async function sha256(text) {
+      const data = new TextEncoder().encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function unlockIfValid(pass) {
+      const hash = await sha256(pass.trim());
+      if (hash === PASS_HASH) {
+        localStorage.setItem(STORAGE_KEY, 'yes');
+        gate.classList.add('hidden');
+        app.classList.remove('hidden');
+        await load();
+        return true;
+      }
+      return false;
+    }
+
+    gateForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = await unlockIfValid(passphrase.value);
+      gateError.textContent = ok ? '' : 'Wrong passphrase.';
+    });
+
+    async function tryAutoUnlock() {
+      if (localStorage.getItem(STORAGE_KEY) === 'yes') {
+        gate.classList.add('hidden');
+        app.classList.remove('hidden');
+        await load();
+      }
+    }
+
+    function renderTag(status) {
+      return `<span class="tag ${status}">${status.replace('_',' ')}</span>`;
+    }
+
     async function load() {
       const res = await fetch('./dashboard-data.json?v=' + Date.now());
       const data = await res.json();
@@ -142,7 +224,7 @@
 
       nextSteps.innerHTML = data.nextSteps.map(step => `
         <div class="item">
-          <div><strong>${step.title}</strong><span class="tag ${step.status}">${step.status.replace('_',' ')}</span></div>
+          <div><strong>${step.title}</strong>${renderTag(step.status)}</div>
           <div class="small">${step.why}</div>
         </div>
       `).join('');
@@ -160,8 +242,25 @@
 
       telegram.innerHTML = `
         <p class="small">${data.notifications.reviewReadyPolicy}</p>
+        <p class="small">${data.notifications.taskCompletionPreference || ''}</p>
         ${data.notifications.telegram.map(t => `<div class="item"><strong>${t.when}</strong><div class="small">${t.event}</div><div class="small muted">Sent: ${t.sent ? 'yes' : 'no'}</div></div>`).join('')}
       `;
+
+      projectLog.innerHTML = (data.projectLog || []).map(entry => `
+        <div class="log-entry">
+          <div class="log-top">
+            <div>
+              <div class="log-kind">${entry.kind}</div>
+              <strong>${entry.title}</strong>
+            </div>
+            <div>
+              ${renderTag(entry.status)}
+              <div class="log-when">${entry.when}</div>
+            </div>
+          </div>
+          <div class="small">${entry.detail}</div>
+        </div>
+      `).join('');
 
       calendar.innerHTML = data.calendar.map(day => `
         <div class="calendar-day">
@@ -172,11 +271,13 @@
 
       links.innerHTML = `
         <div class="item"><strong>Live site</strong><div><a href="${data.links.liveSite}" target="_blank">${data.links.liveSite}</a></div></div>
+        <div class="item"><strong>Dashboard</strong><div><a href="${data.links.dashboard}" target="_blank">${data.links.dashboard}</a></div></div>
         <div class="item"><strong>GitHub repo</strong><div><a href="${data.links.repo}" target="_blank">${data.links.repo}</a></div></div>
         <div class="item"><strong>Workspace folder</strong><div class="small">${data.links.projectFolder}</div></div>
       `;
     }
-    load().catch(err => { summary.textContent = 'Failed to load dashboard data.'; console.error(err); });
+
+    tryAutoUnlock().catch(err => console.error(err));
   </script>
 </body>
 </html>
