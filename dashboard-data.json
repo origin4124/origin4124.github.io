@@ -1,6 +1,6 @@
 {
   "project": "Thriving Dancer",
-  "updatedAt": "2026-04-06T09:56:00-04:00",
+  "updatedAt": "2026-04-06T10:03:00-04:00",
   "currentPath": {
     "summary": "Discovery-first product and business build: turn planning into publishable site structure, clearer command surfaces, and a working launch flow while keeping autonomous activity visible.",
     "focus": [
@@ -191,6 +191,16 @@
           "Ignore worker/service-worker noise unless debugging.",
           "Prefer a clean working browser state over tab buildup."
         ]
+      },
+      {
+        "name": "Trista daily morning report",
+        "interval": "Daily at 10:15 AM America/New_York",
+        "purpose": "Give Trista direct morning visibility into project progress, active track status, and the dashboard link.",
+        "currentBehavior": [
+          "Send a concise morning report covering active track status, latest meaningful progress, what is being assessed or built now, and immediate next moves.",
+          "Include the dashboard link in the report.",
+          "Verify the send because Outlook can be flaky and may leave drafts under poor network conditions."
+        ]
       }
     ]
   },
@@ -359,6 +369,13 @@
       "status": "done",
       "title": "Added explicit per-track dashboard status",
       "detail": "Defined a clearer dashboard model so each active track exposes its current status, last action, current assessment, next move, and last updated time."
+    },
+    {
+      "when": "2026-04-06 10:03 EDT",
+      "kind": "ops",
+      "status": "done",
+      "title": "Scheduled Trista daily morning report",
+      "detail": "Added a daily 10:15 AM America/New_York morning report workflow for Trista so she gets project status and the dashboard link automatically."
     }
   ],
   "links": {
