@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thriving Dancer Morning Update — 2026-04-07</title>
+  <style>
+    #review-gate-overlay { position: fixed; inset: 0; background: rgba(34, 22, 40, 0.72); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 9999; }
+    #review-gate-card { width: 100%; max-width: 420px; background: #ffffff; border: 1px solid #ead9e8; border-radius: 18px; padding: 24px; box-shadow: 0 18px 60px rgba(35, 23, 40, 0.22); font-family: Arial, Helvetica, sans-serif; color: #231728; }
+    #review-gate-card h1 { margin: 0 0 10px; font-size: 24px; line-height: 1.2; }
+    #review-gate-card p { margin: 0 0 14px; line-height: 1.6; color: #5f5365; }
+    #review-gate-card input { width: 100%; padding: 12px 14px; border: 1px solid #ead9e8; border-radius: 12px; font-size: 16px; margin-bottom: 12px; box-sizing: border-box; }
+    #review-gate-card button { width: 100%; padding: 12px 14px; border: 0; border-radius: 999px; background: linear-gradient(135deg,#b64f8e,#6f5fd6); color: #ffffff; font-size: 16px; font-weight: 700; cursor: pointer; }
+    #review-gate-error { min-height: 20px; color: #b00020; font-size: 14px; margin-top: 10px; }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#f7f0f6;font-family:Arial,Helvetica,sans-serif;color:#231728;">
+  <div id="review-gate-overlay">
+    <div id="review-gate-card">
+      <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#b64f8e;font-weight:700;margin-bottom:10px;">Review access</div>
+      <h1>Enter passcode</h1>
+      <p>This review page is lightly gated so only the intended reviewer opens it. Enter the passcode from the email to continue.</p>
+      <input id="review-passcode" type="password" placeholder="Passcode" autocomplete="off" />
+      <button id="review-passcode-submit" type="button">Open review page</button>
+      <div id="review-gate-error"></div>
+    </div>
+  </div>
+  <div id="review-page-content" style="display:none;">
+    <div style="padding:32px 16px;background:#f7f0f6;">
+      <div style="max-width:700px;margin:0 auto;background:#ffffff;border:1px solid #ead9e8;border-radius:20px;overflow:hidden;">
+        <div style="padding:28px 28px 20px;background:linear-gradient(135deg,#fff8fc 0%,#f6eef7 100%);border-bottom:1px solid #ead9e8;">
+          <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#b64f8e;font-weight:700;margin-bottom:10px;">Thriving Dancer</div>
+          <div style="font-size:30px;line-height:1.2;font-weight:700;color:#231728;margin-bottom:10px;">Morning update</div>
+          <div style="font-size:15px;line-height:1.6;color:#5f5365;max-width:620px;">A concise view of current direction, visible progress, what is actively being built, and the later-direction questions that may help shape the next phases more cleanly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const PASSCODE = 'morning-review';
+      const STORAGE_KEY = 'td-morning-report-review-gate-2026-04-07';
+      const overlay = document.getElementById('review-gate-overlay');
+      const content = document.getElementById('review-page-content');
+      const input = document.getElementById('review-passcode');
+      const button = document.getElementById('review-passcode-submit');
+      const error = document.getElementById('review-gate-error');
+      function unlock() { overlay.style.display = 'none'; content.style.display = 'block'; }
+      if (sessionStorage.getItem(STORAGE_KEY) === 'ok') { unlock(); return; }
+      button.addEventListener('click', function () {
+        if ((input.value || '').trim() === PASSCODE) { sessionStorage.setItem(STORAGE_KEY, 'ok'); unlock(); }
+        else { error.textContent = 'That passcode is not correct.'; input.focus(); }
+      });
+      input.addEventListener('keydown', function (event) { if (event.key === 'Enter') button.click(); });
+    })();
+  </script>
+</body>
+</html>
